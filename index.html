@@ -1,296 +1,742 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ML Infrastructure Engineer Portfolio</title>
+    <title>Никитенко Николай | ML Infrastructure Engineer</title>
     
-    <!-- Fonts: Inter Tight for premium headers, Inter for body -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Портфолио ML Infrastructure Engineer. Разработка production-ready ML систем, Computer Vision, NLP, LLM агенты и микросервисная архитектура.">
+    <meta name="keywords" content="ML Engineer, Machine Learning, Python, CV, NLP, LLM, RAG, Data Engineer, Разработчик, Портфолио">
+    <meta name="author" content="Никитенко Николай">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ev0lv3nta.github.io/">
+    <meta property="og:title" content="Никитенко Николай | ML Infrastructure Engineer">
+    <meta property="og:description" content="Проектирую и внедряю ML системы. От CV пайплайнов до LLM-ассистентов.">
+    <meta property="og:image" content="https://ev0lv3nta.github.io/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Никитенко Николай | ML Infrastructure Engineer">
+    <meta property="twitter:description" content="Проектирую и внедряю ML системы. От CV пайплайнов до LLM-ассистентов.">
+    <meta property="twitter:image" content="https://ev0lv3nta.github.io/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Inter Tight', 'sans-serif'],
+                        'sans': ['Outfit', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        zinc: {
-                            850: '#1f1f22',
-                            950: '#0a0a0c', // Darker base
+                        'surface': {
+                            '50': '#18181b',
+                            '100': '#1f1f23',
+                            '200': '#27272a',
+                            '300': '#3f3f46',
+                        },
+                        'accent': {
+                            'primary': '#a78bfa',
+                            'secondary': '#818cf8',
+                            'glow': 'rgba(167, 139, 250, 0.15)',
                         }
                     },
                     animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s ease infinite',
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
                         }
                     }
                 }
             }
         }
     </script>
-
-    <!-- Custom Styles for premium details -->
+    
     <style>
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
         body {
-            background-color: #050505;
-            background-image: radial-gradient(circle at 50% 0%, #1e1e24 0%, #050505 70%);
+            background: #09090b;
+            background-image: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 100%, rgba(139, 92, 246, 0.08), transparent);
         }
         
-        .bento-card {
-            background: rgba(20, 20, 23, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .glass-card {
+            background: linear-gradient(135deg, rgba(39, 39, 42, 0.6) 0%, rgba(24, 24, 27, 0.8) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(63, 63, 70, 0.5);
         }
-
-        .bento-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
+        
+        .glass-card:hover {
+            border-color: rgba(167, 139, 250, 0.3);
+            box-shadow: 0 0 40px rgba(167, 139, 250, 0.05);
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(39, 39, 42, 0.8) 0%, rgba(31, 31, 35, 0.9) 100%);
+            border: 1px solid rgba(63, 63, 70, 0.6);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            border-color: rgba(167, 139, 250, 0.5);
             transform: translateY(-2px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-            background: rgba(25, 25, 28, 0.8);
-        }
-
-        .tech-pill {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.2s;
+            box-shadow: 0 4px 20px rgba(167, 139, 250, 0.1);
         }
         
-        .tech-pill:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.1);
+        .gradient-text {
+            background: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 50%, #e4e4e7 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        /* Hide scrollbar for clean look in overflow containers */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+        
+        .accent-gradient {
+            background: linear-gradient(135deg, #a78bfa 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        
+        .achievement-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #a78bfa 0%, #818cf8 50%, #6366f1 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .achievement-card:hover::before {
+            opacity: 1;
+        }
+        
+        .status-indicator {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        .stagger-7 { animation-delay: 0.7s; }
+        .stagger-8 { animation-delay: 0.8s; }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #18181b;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #52525b;
+        }
+        
+        /* Grid lines background */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(63, 63, 70, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(63, 63, 70, 0.1) 1px, transparent 1px);
+            background-size: 60px 60px;
         }
     </style>
 </head>
-<body class="text-zinc-300 antialiased min-h-screen selection:bg-zinc-700 selection:text-white pb-20">
+<body class="min-h-screen text-zinc-300 font-sans grid-bg">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="glass-card rounded-2xl px-6 py-3 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-emerald-400 status-indicator"></div>
+                    <span class="font-mono text-sm text-zinc-400">открыт к предложениям</span>
+                </div>
+                <div class="hidden sm:flex items-center gap-6">
+                    <a href="#skills" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Skills</a>
+                    <a href="#experience" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Experience</a>
+                    <a href="#contact" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-20">
-        
-        <!-- Grid Container -->
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
-
-            <!-- 1. HEADER / HERO (Span 2 cols, 2 rows on desktop) -->
-            <div class="bento-card col-span-1 md:col-span-2 lg:col-span-2 row-span-1 md:row-span-2 rounded-3xl p-8 flex flex-col justify-between group relative overflow-hidden animate-fade-in" style="animation-delay: 0ms;">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-zinc-800/10 blur-[100px] rounded-full pointer-events-none"></div>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-24 pb-12">
+        <div class="max-w-6xl mx-auto w-full">
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
                 
-                <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-6">
-                        <span class="relative flex h-2 w-2">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                        </span>
-                        Open to work
-                    </div>
+                <!-- Main Hero Content -->
+                <div class="lg:col-span-7 space-y-8 opacity-0 animate-slide-up">
                     
-                    <h1 class="font-display text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 leading-tight">
-                        ML Infrastructure <br />
-                        <span class="text-zinc-500">Engineer</span>
-                    </h1>
-                    <p class="text-zinc-400 text-lg max-w-md leading-relaxed">
-                        Solution Architect, специализирующийся на проектировании высоконагруженных ML-систем, ETL-пайплайнах и автоматизации.
-                    </p>
-                </div>
-
-                <div class="flex gap-4 mt-8">
-                    <a href="mailto:example@email.com" class="flex items-center gap-2 px-5 py-2.5 bg-white text-black rounded-xl font-medium hover:bg-zinc-200 transition-colors">
-                        <i data-lucide="mail" class="w-4 h-4"></i>
-                        Contact Me
-                    </a>
-                    <a href="https://github.com" target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-zinc-800/50 text-white border border-zinc-700/50 rounded-xl font-medium hover:bg-zinc-800 transition-colors">
-                        <i data-lucide="github" class="w-4 h-4"></i>
-                        GitHub
-                    </a>
-                </div>
-            </div>
-
-            <!-- 2. TECH STACK (Span 2 cols, 1 row) -->
-            <div class="bento-card col-span-1 md:col-span-1 lg:col-span-2 rounded-3xl p-6 flex flex-col animate-fade-in" style="animation-delay: 100ms;">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-white font-display font-semibold text-lg flex items-center gap-2">
-                        <i data-lucide="cpu" class="w-5 h-5 text-zinc-500"></i>
-                        Core Stack
-                    </h3>
-                </div>
-                <div class="flex flex-wrap gap-2 content-start">
-                    <!-- Python & ML -->
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Python</span>
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">PyTorch</span>
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Computer Vision</span>
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">NLP / Transformers</span>
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">LangChain</span>
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">RAG</span>
-                    
-                    <!-- Infra & DB -->
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Linux</span>
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">PostgreSQL</span>
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Asyncpg</span>
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Nginx</span>
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Grafana</span>
-                    
-                    <!-- Other -->
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">ETL</span>
-                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Aiogram</span>
-                </div>
-            </div>
-
-            <!-- 3. PROJECT: ML INFRA (FMCG) -->
-            <div class="bento-card col-span-1 md:col-span-2 lg:col-span-2 rounded-3xl p-6 flex flex-col justify-between animate-fade-in group" style="animation-delay: 150ms;">
-                <div>
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
-                            <i data-lucide="factory" class="w-5 h-5"></i>
-                        </div>
-                        <span class="text-xs font-mono text-zinc-500">FMCG / CV</span>
-                    </div>
-                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">ML Inference Infrastructure</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed mb-4">
-                        Архитектура инференса CV моделей (YOLO) на промышленных линиях. Режим 24/7: мониторинг оборудования, детекция простоев и учет продукции.
-                    </p>
-                </div>
-                <div class="h-px w-full bg-zinc-800 my-4"></div>
-                <div class="flex gap-3 text-xs text-zinc-500 font-mono">
-                    <span>Python</span>
-                    <span>•</span>
-                    <span>YOLO</span>
-                    <span>•</span>
-                    <span>Hardware Integration</span>
-                </div>
-            </div>
-
-            <!-- 4. PROJECT: AUTOMATION (VLM+SAM) -->
-            <div class="bento-card col-span-1 rounded-3xl p-6 animate-fade-in group" style="animation-delay: 200ms;">
-                <div class="flex items-start justify-between mb-4">
-                     <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
-                        <i data-lucide="scan-face" class="w-5 h-5"></i>
-                    </div>
-                </div>
-                <h3 class="text-lg font-display font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Auto Labeling Pipeline</h3>
-                <p class="text-xs text-zinc-400 leading-relaxed mb-4">
-                    Реализация пайплайна (VLM + SAM), ускорившая дообучение моделей под специфику площадок.
-                </p>
-                <div class="flex flex-wrap gap-1.5 mt-auto">
-                    <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] text-zinc-400 border border-zinc-700/50">VLM</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] text-zinc-400 border border-zinc-700/50">SAM</span>
-                </div>
-            </div>
-
-            <!-- 5. PROJECT: TG MICROSERVICES -->
-            <div class="bento-card col-span-1 rounded-3xl p-6 animate-fade-in group" style="animation-delay: 250ms;">
-                <div class="flex items-start justify-between mb-4">
-                     <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
-                        <i data-lucide="bot" class="w-5 h-5"></i>
-                    </div>
-                </div>
-                <h3 class="text-lg font-display font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">Telegram Ecosystem</h3>
-                <p class="text-xs text-zinc-400 leading-relaxed mb-4">
-                    Микросервисная архитектура из 10+ ботов для контроля качества, BI-отчетности и алертинга.
-                </p>
-                <div class="flex flex-wrap gap-1.5 mt-auto">
-                    <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] text-zinc-400 border border-zinc-700/50">Aiogram</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] text-zinc-400 border border-zinc-700/50">Asyncpg</span>
-                </div>
-            </div>
-
-            <!-- 6. PROJECT: AI CONSULTANT (RAG) -->
-            <div class="bento-card col-span-1 md:col-span-2 lg:col-span-2 rounded-3xl p-6 flex flex-row gap-6 animate-fade-in group items-center" style="animation-delay: 300ms;">
-                <div class="flex-1">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
-                            <i data-lucide="brain-circuit" class="w-5 h-5"></i>
-                        </div>
-                        <span class="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 text-xs font-medium border border-purple-500/20">RAG System</span>
-                    </div>
-                    <h3 class="text-xl font-display font-bold text-white mb-2">Corporate AI Consultant</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed">
-                        Внедрил систему векторного поиска и LLM-генерации ответов по базе данных отчетов для сотрудников.
-                    </p>
-                </div>
-                <!-- Visual Decoration for RAG -->
-                <div class="hidden sm:flex h-24 w-24 bg-gradient-to-br from-zinc-800 to-black rounded-xl border border-zinc-800 items-center justify-center shrink-0">
-                    <i data-lucide="sparkles" class="w-8 h-8 text-zinc-600 group-hover:text-purple-400 transition-colors"></i>
-                </div>
-            </div>
-
-            <!-- 7. INFRA & MONITORING -->
-            <div class="bento-card col-span-1 md:col-span-1 rounded-3xl p-6 animate-fade-in group" style="animation-delay: 350ms;">
-                 <div class="flex items-start justify-between mb-4">
-                     <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
-                        <i data-lucide="server" class="w-5 h-5"></i>
-                    </div>
-                </div>
-                <h3 class="text-lg font-display font-bold text-white mb-2">Linux & Monitoring</h3>
-                <p class="text-xs text-zinc-400 leading-relaxed mb-3">
-                    Linux-инфраструктура с нуля. Systemd сервисы, таймеры, безопасность.
-                </p>
-            </div>
-
-            <!-- 8. DATA ENGINEERING -->
-            <div class="bento-card col-span-1 md:col-span-1 rounded-3xl p-6 animate-fade-in group" style="animation-delay: 400ms;">
-                <div class="flex items-start justify-between mb-4">
-                     <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
-                        <i data-lucide="database" class="w-5 h-5"></i>
-                    </div>
-                </div>
-                <h3 class="text-lg font-display font-bold text-white mb-2">Data Engineering</h3>
-                <p class="text-xs text-zinc-400 leading-relaxed mb-3">
-                    Агрегация данных (ERP, датчики, видео) в единое хранилище. ETL пайплайны.
-                </p>
-            </div>
-
-            <!-- 9. WEB ANALYTICS -->
-            <div class="bento-card col-span-1 md:col-span-1 lg:col-span-2 rounded-3xl p-6 flex flex-col justify-center animate-fade-in group" style="animation-delay: 450ms;">
-                 <div class="flex items-center gap-4">
-                     <div class="p-3 bg-zinc-800/50 rounded-xl border border-zinc-700/30 text-white shrink-0">
-                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-display font-bold text-white mb-1">Analytics Dashboard</h3>
-                        <p class="text-xs text-zinc-400 leading-relaxed">
-                            Портал на Nginx + Grafana для топ-менеджмента. Визуализация бизнес-метрик.
+                    <!-- Title -->
+                    <div class="space-y-4">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight gradient-text leading-tight">
+                            Никитенко Николай
+                        </h1>
+                        <p class="text-xl sm:text-2xl text-zinc-500 font-light">
+                            ML Infrastructure Engineer
                         </p>
                     </div>
+                    
+                    <!-- Description -->
+                    <p class="text-lg text-zinc-400 leading-relaxed max-w-xl">
+                        Проектирую и внедряю production-ready ML системы. 
+                        От Computer Vision пайплайнов до микросервисных архитектур 
+                        и AI-ассистентов на базе LLM.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#experience" class="group inline-flex items-center gap-2 px-6 py-3 bg-zinc-100 text-zinc-900 rounded-xl font-medium hover:bg-white transition-all">
+                            <span>Смотреть опыт</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-xl font-medium hover:border-zinc-600 transition-all">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            <span>Связаться</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="lg:col-span-5 grid grid-cols-2 gap-4 opacity-0 animate-slide-up stagger-2">
+                    
+                    <div class="glass-card rounded-2xl p-6 space-y-3 transition-all duration-300">
+                        <div class="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center">
+                            <i data-lucide="brain" class="w-5 h-5 text-violet-400"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-2xl font-semibold text-zinc-100">CV & NLP</p>
+                            <p class="text-sm text-zinc-500">Production ML</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl p-6 space-y-3 transition-all duration-300">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                            <i data-lucide="bot" class="w-5 h-5 text-blue-400"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-2xl font-semibold text-zinc-100">10+</p>
+                            <p class="text-sm text-zinc-500">Telegram ботов</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl p-6 space-y-3 transition-all duration-300">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                            <i data-lucide="server" class="w-5 h-5 text-emerald-400"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-2xl font-semibold text-zinc-100">24/7</p>
+                            <p class="text-sm text-zinc-500">Инфраструктура</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl p-6 space-y-3 transition-all duration-300">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+                            <i data-lucide="database" class="w-5 h-5 text-amber-400"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-2xl font-semibold text-zinc-100">ETL</p>
+                            <p class="text-sm text-zinc-500">Data Pipelines</p>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
-
         </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="mt-20 border-t border-zinc-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-600 mb-10">
-            <p>&copy; 2024. Built with Tailwind & Lucide.</p>
-            <div class="flex gap-6">
-                <a href="#" class="hover:text-zinc-400 transition-colors">Telegram</a>
-                <a href="#" class="hover:text-zinc-400 transition-colors">LinkedIn</a>
-                <a href="#" class="hover:text-zinc-400 transition-colors">GitHub</a>
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            
+            <!-- Section Header -->
+            <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
+                    <span class="font-mono text-sm text-accent-primary">01</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Технологический стек</h2>
+                <p class="text-zinc-500 max-w-2xl">Инструменты и технологии, которые использую для построения надёжных ML-систем</p>
             </div>
-        </footer>
+            
+            <!-- Skills Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- ML & AI -->
+                <div class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-1 transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-violet-400"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-zinc-100">ML & AI</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Python</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">PyTorch</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Computer Vision</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">NLP</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Transformers</span>
+                    </div>
+                </div>
+                
+                <!-- LLM & RAG -->
+                <div class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-2 transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                            <i data-lucide="message-square" class="w-5 h-5 text-blue-400"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-zinc-100">LLM & RAG</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">LangChain</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">LangGraph</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">RAG</span>
+                    </div>
+                </div>
+                
+                <!-- Telegram & Bots -->
+                <div class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-3 transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center">
+                            <i data-lucide="send" class="w-5 h-5 text-cyan-400"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-zinc-100">Telegram & Bots</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Aiogram</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Telegram Bot API</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Asyncpg</span>
+                    </div>
+                </div>
+                
+                <!-- Data & ETL -->
+                <div class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-4 transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+                            <i data-lucide="database" class="w-5 h-5 text-amber-400"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-zinc-100">Data & ETL</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">PostgreSQL</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">ETL</span>
+                    </div>
+                </div>
+                
+                <!-- Infrastructure -->
+                <div class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-5 transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                            <i data-lucide="server" class="w-5 h-5 text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-zinc-100">Infrastructure</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Linux</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Nginx</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Systemd</span>
+                    </div>
+                </div>
+                
+                <!-- Monitoring -->
+                <div class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-6 transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center">
+                            <i data-lucide="activity" class="w-5 h-5 text-rose-400"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-zinc-100">Monitoring</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Grafana</span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Dashboards</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
 
-    </div>
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            
+            <!-- Section Header -->
+            <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
+                    <span class="font-mono text-sm text-accent-primary">02</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Ключевой опыт</h2>
+                <p class="text-zinc-500 max-w-2xl">Проекты и достижения в области ML-инфраструктуры и автоматизации</p>
+            </div>
+            
+            <!-- Experience Grid -->
+            <div class="grid gap-6">
+                
+                <!-- ML Infrastructure -->
+                <div class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-1 transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500/20 to-purple-500/10 flex items-center justify-center">
+                                <i data-lucide="eye" class="w-7 h-7 text-violet-400"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-1">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                                <h3 class="text-xl font-semibold text-zinc-100">Разработка ML-инфраструктуры</h3>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-violet-500/10 text-violet-400 border border-violet-500/20 w-fit">
+                                    FMCG
+                                </span>
+                            </div>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Настроил и внедрил инференс CV моделей (YOLO) на промышленных линиях. 
+                                Режим работы 24/7: мониторинг оборудования, детекция простоев и автоматический учет продукции.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">YOLO</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Computer Vision</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">24/7 Production</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Auto Labeling -->
+                <div class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-2 transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/10 flex items-center justify-center">
+                                <i data-lucide="wand-2" class="w-7 h-7 text-blue-400"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-1">
+                            <h3 class="text-xl font-semibold text-zinc-100">Автоматизация разметки данных</h3>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Реализовал пайплайн на базе VLM + SAM для автоматической разметки, 
+                                что существенно ускорило дообучение моделей под специфику производственных площадок.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">VLM</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">SAM</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Auto-labeling</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Telegram Ecosystem -->
+                <div class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-3 transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-teal-500/10 flex items-center justify-center">
+                                <i data-lucide="bot" class="w-7 h-7 text-cyan-400"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-1">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                                <h3 class="text-xl font-semibold text-zinc-100">Микросервисная экосистема Telegram</h3>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 w-fit">
+                                    10+ ботов
+                                </span>
+                            </div>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Система из 10+ ботов на aiogram и asyncpg для контроля качества, 
+                                BI-отчетности и системы алертинга в реальном времени.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">aiogram</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">asyncpg</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">BI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- RAG System -->
+                <div class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-4 transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/10 flex items-center justify-center">
+                                <i data-lucide="brain" class="w-7 h-7 text-amber-400"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-1">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                                <h3 class="text-xl font-semibold text-zinc-100">AI-Консультант на базе RAG</h3>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 w-fit">
+                                    LLM
+                                </span>
+                            </div>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Внедрил систему векторного поиска и LLM-генерации ответов по базе данных отчетов 
+                                для быстрого доступа сотрудников к корпоративным знаниям.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">RAG</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Vector Search</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">LLM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Engineering -->
+                <div class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-5 transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-green-500/10 flex items-center justify-center">
+                                <i data-lucide="workflow" class="w-7 h-7 text-emerald-400"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-1">
+                            <h3 class="text-xl font-semibold text-zinc-100">Data Engineering & ETL</h3>
+                            <p class="text-zinc-400 leading-relaxed">
+                                В паре с 1С-аналитиком построил пайплайны агрегации данных из различных источников 
+                                (ERP, датчики, видео, файлы) в единое хранилище данных.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">ETL</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Data Warehouse</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">1C Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Analytics -->
+                <div class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-6 transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-purple-500/10 flex items-center justify-center">
+                                <i data-lucide="bar-chart-3" class="w-7 h-7 text-indigo-400"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-1">
+                            <h3 class="text-xl font-semibold text-zinc-100">Аналитические витрины</h3>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Организовал схему данных и миграционные скрипты для трансформации 
+                                выгрузок в структурированные аналитические витрины.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">PostgreSQL</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Data Marts</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Migrations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Infrastructure -->
+                <div class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-7 transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500/20 to-pink-500/10 flex items-center justify-center">
+                                <i data-lucide="server" class="w-7 h-7 text-rose-400"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-1">
+                            <h3 class="text-xl font-semibold text-zinc-100">Infrastructure & Monitoring</h3>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Linux-инфраструктура в корпоративном контуре с нуля. 
+                                Настройка systemd-сервисов и таймеров для автоматизации процессов.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Linux</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Systemd</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">On-premise</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Web Analytics -->
+                <div class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-8 transition-all duration-300">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-500/20 to-blue-500/10 flex items-center justify-center">
+                                <i data-lucide="layout-dashboard" class="w-7 h-7 text-sky-400"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-4 flex-1">
+                            <h3 class="text-xl font-semibold text-zinc-100">Web-аналитика для топ-менеджмента</h3>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Портал на nginx + Grafana с интеграцией дашбордов 
+                                для оперативного мониторинга KPI руководством компании.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Nginx</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Grafana</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Dashboards</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            
+            <!-- Section Header -->
+            <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
+                    <span class="font-mono text-sm text-accent-primary">03</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Связаться</h2>
+                <p class="text-zinc-500 max-w-2xl">Открыт к интересным проектам и сотрудничеству</p>
+            </div>
+            
+            <!-- Contact Cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Telegram -->
+                <a href="https://t.me/nks3lt" target="_blank" class="glass-card rounded-2xl p-6 flex items-center gap-4 opacity-0 animate-slide-up stagger-1 transition-all duration-300 hover:scale-[1.02] group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                        <i data-lucide="send" class="w-6 h-6 text-blue-400"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-zinc-100">Telegram</p>
+                        <p class="text-sm text-zinc-500">@nks3lt</p>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 text-zinc-600 ml-auto group-hover:text-zinc-400 transition-colors"></i>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/Ev0lv3nta" target="_blank" class="glass-card rounded-2xl p-6 flex items-center gap-4 opacity-0 animate-slide-up stagger-2 transition-all duration-300 hover:scale-[1.02] group">
+                    <div class="w-12 h-12 rounded-xl bg-zinc-500/10 flex items-center justify-center group-hover:bg-zinc-500/20 transition-colors">
+                        <i data-lucide="github" class="w-6 h-6 text-zinc-400"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-zinc-100">GitHub</p>
+                        <p class="text-sm text-zinc-500">@Ev0lv3nta</p>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 text-zinc-600 ml-auto group-hover:text-zinc-400 transition-colors"></i>
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:nks3lt@gmail.com" class="glass-card rounded-2xl p-6 flex items-center gap-4 opacity-0 animate-slide-up stagger-3 transition-all duration-300 hover:scale-[1.02] group">
+                    <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center group-hover:bg-violet-500/20 transition-colors">
+                        <i data-lucide="mail" class="w-6 h-6 text-violet-400"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-zinc-100">Email</p>
+                        <p class="text-sm text-zinc-500">nks3lt@gmail.com</p>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 text-zinc-600 ml-auto group-hover:text-zinc-400 transition-colors"></i>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-zinc-800/50">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
+            <p class="font-mono text-sm text-zinc-600">© 2025</p>
+        </div>
+    </footer>
 
     <!-- Initialize Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.opacity-0').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
+
