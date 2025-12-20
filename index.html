@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Infrastructure Engineer Portfolio</title>
+    
+    <!-- Fonts: Inter Tight for premium headers, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Inter Tight', 'sans-serif'],
+                    },
+                    colors: {
+                        zinc: {
+                            850: '#1f1f22',
+                            950: '#0a0a0c', // Darker base
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles for premium details -->
+    <style>
+        body {
+            background-color: #050505;
+            background-image: radial-gradient(circle at 50% 0%, #1e1e24 0%, #050505 70%);
+        }
+        
+        .bento-card {
+            background: rgba(20, 20, 23, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            background: rgba(25, 25, 28, 0.8);
+        }
+
+        .tech-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+        }
+        
+        .tech-pill:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hide scrollbar for clean look in overflow containers */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-zinc-300 antialiased min-h-screen selection:bg-zinc-700 selection:text-white pb-20">
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-20">
+        
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
+
+            <!-- 1. HEADER / HERO (Span 2 cols, 2 rows on desktop) -->
+            <div class="bento-card col-span-1 md:col-span-2 lg:col-span-2 row-span-1 md:row-span-2 rounded-3xl p-8 flex flex-col justify-between group relative overflow-hidden animate-fade-in" style="animation-delay: 0ms;">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-zinc-800/10 blur-[100px] rounded-full pointer-events-none"></div>
+                
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-6">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        Open to work
+                    </div>
+                    
+                    <h1 class="font-display text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 leading-tight">
+                        ML Infrastructure <br />
+                        <span class="text-zinc-500">Engineer</span>
+                    </h1>
+                    <p class="text-zinc-400 text-lg max-w-md leading-relaxed">
+                        Solution Architect, специализирующийся на проектировании высоконагруженных ML-систем, ETL-пайплайнах и автоматизации.
+                    </p>
+                </div>
+
+                <div class="flex gap-4 mt-8">
+                    <a href="mailto:example@email.com" class="flex items-center gap-2 px-5 py-2.5 bg-white text-black rounded-xl font-medium hover:bg-zinc-200 transition-colors">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        Contact Me
+                    </a>
+                    <a href="https://github.com" target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-zinc-800/50 text-white border border-zinc-700/50 rounded-xl font-medium hover:bg-zinc-800 transition-colors">
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. TECH STACK (Span 2 cols, 1 row) -->
+            <div class="bento-card col-span-1 md:col-span-1 lg:col-span-2 rounded-3xl p-6 flex flex-col animate-fade-in" style="animation-delay: 100ms;">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-white font-display font-semibold text-lg flex items-center gap-2">
+                        <i data-lucide="cpu" class="w-5 h-5 text-zinc-500"></i>
+                        Core Stack
+                    </h3>
+                </div>
+                <div class="flex flex-wrap gap-2 content-start">
+                    <!-- Python & ML -->
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Python</span>
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">PyTorch</span>
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Computer Vision</span>
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">NLP / Transformers</span>
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">LangChain</span>
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">RAG</span>
+                    
+                    <!-- Infra & DB -->
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Linux</span>
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">PostgreSQL</span>
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Asyncpg</span>
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Nginx</span>
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Grafana</span>
+                    
+                    <!-- Other -->
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">ETL</span>
+                    <span class="tech-pill px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300">Aiogram</span>
+                </div>
+            </div>
+
+            <!-- 3. PROJECT: ML INFRA (FMCG) -->
+            <div class="bento-card col-span-1 md:col-span-2 lg:col-span-2 rounded-3xl p-6 flex flex-col justify-between animate-fade-in group" style="animation-delay: 150ms;">
+                <div>
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
+                            <i data-lucide="factory" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-mono text-zinc-500">FMCG / CV</span>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">ML Inference Infrastructure</h3>
+                    <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                        Архитектура инференса CV моделей (YOLO) на промышленных линиях. Режим 24/7: мониторинг оборудования, детекция простоев и учет продукции.
+                    </p>
+                </div>
+                <div class="h-px w-full bg-zinc-800 my-4"></div>
+                <div class="flex gap-3 text-xs text-zinc-500 font-mono">
+                    <span>Python</span>
+                    <span>•</span>
+                    <span>YOLO</span>
+                    <span>•</span>
+                    <span>Hardware Integration</span>
+                </div>
+            </div>
+
+            <!-- 4. PROJECT: AUTOMATION (VLM+SAM) -->
+            <div class="bento-card col-span-1 rounded-3xl p-6 animate-fade-in group" style="animation-delay: 200ms;">
+                <div class="flex items-start justify-between mb-4">
+                     <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
+                        <i data-lucide="scan-face" class="w-5 h-5"></i>
+                    </div>
+                </div>
+                <h3 class="text-lg font-display font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Auto Labeling Pipeline</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed mb-4">
+                    Реализация пайплайна (VLM + SAM), ускорившая дообучение моделей под специфику площадок.
+                </p>
+                <div class="flex flex-wrap gap-1.5 mt-auto">
+                    <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] text-zinc-400 border border-zinc-700/50">VLM</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] text-zinc-400 border border-zinc-700/50">SAM</span>
+                </div>
+            </div>
+
+            <!-- 5. PROJECT: TG MICROSERVICES -->
+            <div class="bento-card col-span-1 rounded-3xl p-6 animate-fade-in group" style="animation-delay: 250ms;">
+                <div class="flex items-start justify-between mb-4">
+                     <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                    </div>
+                </div>
+                <h3 class="text-lg font-display font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">Telegram Ecosystem</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed mb-4">
+                    Микросервисная архитектура из 10+ ботов для контроля качества, BI-отчетности и алертинга.
+                </p>
+                <div class="flex flex-wrap gap-1.5 mt-auto">
+                    <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] text-zinc-400 border border-zinc-700/50">Aiogram</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] text-zinc-400 border border-zinc-700/50">Asyncpg</span>
+                </div>
+            </div>
+
+            <!-- 6. PROJECT: AI CONSULTANT (RAG) -->
+            <div class="bento-card col-span-1 md:col-span-2 lg:col-span-2 rounded-3xl p-6 flex flex-row gap-6 animate-fade-in group items-center" style="animation-delay: 300ms;">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
+                            <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+                        </div>
+                        <span class="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 text-xs font-medium border border-purple-500/20">RAG System</span>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2">Corporate AI Consultant</h3>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Внедрил систему векторного поиска и LLM-генерации ответов по базе данных отчетов для сотрудников.
+                    </p>
+                </div>
+                <!-- Visual Decoration for RAG -->
+                <div class="hidden sm:flex h-24 w-24 bg-gradient-to-br from-zinc-800 to-black rounded-xl border border-zinc-800 items-center justify-center shrink-0">
+                    <i data-lucide="sparkles" class="w-8 h-8 text-zinc-600 group-hover:text-purple-400 transition-colors"></i>
+                </div>
+            </div>
+
+            <!-- 7. INFRA & MONITORING -->
+            <div class="bento-card col-span-1 md:col-span-1 rounded-3xl p-6 animate-fade-in group" style="animation-delay: 350ms;">
+                 <div class="flex items-start justify-between mb-4">
+                     <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
+                        <i data-lucide="server" class="w-5 h-5"></i>
+                    </div>
+                </div>
+                <h3 class="text-lg font-display font-bold text-white mb-2">Linux & Monitoring</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed mb-3">
+                    Linux-инфраструктура с нуля. Systemd сервисы, таймеры, безопасность.
+                </p>
+            </div>
+
+            <!-- 8. DATA ENGINEERING -->
+            <div class="bento-card col-span-1 md:col-span-1 rounded-3xl p-6 animate-fade-in group" style="animation-delay: 400ms;">
+                <div class="flex items-start justify-between mb-4">
+                     <div class="p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/30 text-white">
+                        <i data-lucide="database" class="w-5 h-5"></i>
+                    </div>
+                </div>
+                <h3 class="text-lg font-display font-bold text-white mb-2">Data Engineering</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed mb-3">
+                    Агрегация данных (ERP, датчики, видео) в единое хранилище. ETL пайплайны.
+                </p>
+            </div>
+
+            <!-- 9. WEB ANALYTICS -->
+            <div class="bento-card col-span-1 md:col-span-1 lg:col-span-2 rounded-3xl p-6 flex flex-col justify-center animate-fade-in group" style="animation-delay: 450ms;">
+                 <div class="flex items-center gap-4">
+                     <div class="p-3 bg-zinc-800/50 rounded-xl border border-zinc-700/30 text-white shrink-0">
+                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-display font-bold text-white mb-1">Analytics Dashboard</h3>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Портал на Nginx + Grafana для топ-менеджмента. Визуализация бизнес-метрик.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-20 border-t border-zinc-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-600 mb-10">
+            <p>&copy; 2024. Built with Tailwind & Lucide.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-zinc-400 transition-colors">Telegram</a>
+                <a href="#" class="hover:text-zinc-400 transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-zinc-400 transition-colors">GitHub</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Initialize Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
