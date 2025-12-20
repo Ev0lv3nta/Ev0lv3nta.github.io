@@ -211,10 +211,24 @@
                     <span class="font-mono text-sm text-zinc-400">открыт к предложениям</span>
                 </div>
                 <div class="hidden sm:flex items-center gap-6">
-                    <a href="#skills" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Skills</a>
-                    <a href="#experience" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Experience</a>
-                    <a href="#contact" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Contact</a>
+                    <a href="#skills" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Навыки</a>
+                    <a href="#experience" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Опыт</a>
+                    <a href="#projects" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Проекты</a>
+                    <a href="#education" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Обучение</a>
                 </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="sm:hidden p-2 text-zinc-400 hover:text-zinc-100 transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden sm:hidden mt-2 max-w-6xl mx-auto px-6 animate-fade-in">
+            <div class="glass-card rounded-2xl p-4 flex flex-col gap-4 shadow-2xl">
+                <a href="#skills" class="text-sm text-zinc-400 hover:text-zinc-100 py-2 border-b border-zinc-800/50 transition-colors">Навыки</a>
+                <a href="#experience" class="text-sm text-zinc-400 hover:text-zinc-100 py-2 border-b border-zinc-800/50 transition-colors">Опыт</a>
+                <a href="#projects" class="text-sm text-zinc-400 hover:text-zinc-100 py-2 border-b border-zinc-800/50 transition-colors">Проекты</a>
+                <a href="#education" class="text-sm text-zinc-400 hover:text-zinc-100 py-2 transition-colors">Обучение</a>
             </div>
         </div>
     </nav>
@@ -247,12 +261,12 @@
                     <!-- CTA Buttons -->
                     <div class="flex flex-wrap gap-4">
                         <a href="#experience" class="group inline-flex items-center gap-2 px-6 py-3 bg-zinc-100 text-zinc-900 rounded-xl font-medium hover:bg-white transition-all">
-                            <span>Смотреть опыт</span>
+                            <span>Опыт и проекты</span>
                             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
-                        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-xl font-medium hover:border-zinc-600 transition-all">
-                            <i data-lucide="mail" class="w-4 h-4"></i>
-                            <span>Связаться</span>
+                        <a href="https://github.com/ev0lv3nta" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-xl font-medium hover:border-zinc-600 transition-all">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            <span>GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -443,20 +457,20 @@
                         </div>
                         <div class="space-y-4 flex-1">
                             <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                                <h3 class="text-xl font-semibold text-zinc-100">Industrial CV & Monitoring</h3>
+                                <h3 class="text-xl font-semibold text-zinc-100">Industrial CV & real-time мониторинг</h3>
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-violet-500/10 text-violet-400 border border-violet-500/20 w-fit">
                                     Enterprise
                                 </span>
                             </div>
                             <p class="text-zinc-400 leading-relaxed">
-                                Система видеоаналитики 24/7 для крупнейших агропромышленных холдингов федерального уровня. 
-                                Детекция технологических циклов и контроль регламента обслуживания оборудования. 
-                                Оцифровка процессов для систем бизнес-аналитики.
+                                Разработка и поддержка системы видеоаналитики для крупнейших агропромышленных холдингов. 
+                                <strong>19+ активных CV-потоков</strong> для детекции технологических циклов и контроля замены оснастки. 
+                                Интеграция с PostgreSQL и сетевыми хранилищами (SMB/CIFS) для бесперебойной работы 24/7.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">YOLO</span>
-                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Industrial ML</span>
-                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">24/7 Production</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">YOLO & PyTorch</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Real-time Inference</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">19+ Streams</span>
                             </div>
                         </div>
                     </div>
@@ -550,15 +564,15 @@
                             </div>
                         </div>
                         <div class="space-y-4 flex-1">
-                            <h3 class="text-xl font-semibold text-zinc-100">ETL & Data Pipelines</h3>
+                            <h3 class="text-xl font-semibold text-zinc-100">ETL & Data Engineering</h3>
                             <p class="text-zinc-400 leading-relaxed">
-                                Построение пайплайнов агрегации данных из гетерогенных источников (ERP, IoT-датчики, видеопотоки). 
-                                Обеспечение целостности и подготовки данных для аналитических систем.
+                                Автоматизация сбора данных из Excel (1C-Share) и CSV в форматы <strong>Parquet</strong> и SQLite для аналитики. 
+                                Настройка фоновых задач через systemd timers и оркестрация процессов обработки данных для Grafana-дашбордов.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">ETL</span>
-                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Data Warehouse</span>
-                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Integration</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Parquet</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Systemd Timers</span>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Automated Pipelines</span>
                             </div>
                         </div>
                     </div>
@@ -637,6 +651,89 @@
         </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
+                    <span class="font-mono text-sm text-accent-primary">03</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Личные проекты</h2>
+                <p class="text-zinc-500 max-w-2xl">Разработки в свободное время: open-source и эксперименты</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Project Placeholder 1 -->
+                <div class="glass-card rounded-2xl p-6 space-y-4 opacity-0 animate-slide-up stagger-1 group transition-all duration-300">
+                    <div class="aspect-video rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-center justify-center group-hover:border-accent-primary/30 transition-colors">
+                        <i data-lucide="github" class="w-12 h-12 text-zinc-800 group-hover:text-accent-primary/20 transition-colors"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-lg font-medium text-zinc-100">Название проекта</h3>
+                        <p class="text-sm text-zinc-500">Краткое описание того, что делает проект и какие технологии использовались.</p>
+                    </div>
+                    <div class="flex gap-4 pt-2">
+                        <a href="#" class="text-xs font-mono text-accent-primary hover:text-accent-secondary transition-colors">Source Code →</a>
+                    </div>
+                </div>
+
+                <!-- Project Placeholder 2 -->
+                <div class="glass-card rounded-2xl p-6 space-y-4 opacity-0 animate-slide-up stagger-2 group transition-all duration-300">
+                    <div class="aspect-video rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-center justify-center group-hover:border-accent-primary/30 transition-colors">
+                        <i data-lucide="github" class="w-12 h-12 text-zinc-800 group-hover:text-accent-primary/20 transition-colors"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-lg font-medium text-zinc-100">Название проекта</h3>
+                        <p class="text-sm text-zinc-500">Краткое описание того, что делает проект и какие технологии использовались.</p>
+                    </div>
+                    <div class="flex gap-4 pt-2">
+                        <a href="#" class="text-xs font-mono text-accent-primary hover:text-accent-secondary transition-colors">Source Code →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
+                    <span class="font-mono text-sm text-accent-primary">04</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Образование и курсы</h2>
+                <p class="text-zinc-500 max-w-2xl">Академическая база и профессиональная подготовка</p>
+            </div>
+            
+            <div class="grid gap-6">
+                <!-- University Placeholder -->
+                <div class="glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-1">
+                    <div class="flex flex-col sm:flex-row justify-between gap-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-zinc-100">Название Университета</h3>
+                            <p class="text-accent-primary">Факультет / Специальность</p>
+                        </div>
+                        <div class="text-zinc-500 font-mono text-sm">20XX — 20XX</div>
+                    </div>
+                </div>
+
+                <!-- Courses List Placeholder -->
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="glass-card rounded-2xl p-6 opacity-0 animate-slide-up stagger-2">
+                        <p class="text-sm text-zinc-500 font-mono mb-1">Платформа</p>
+                        <h4 class="font-medium text-zinc-100">Название пройденного курса</h4>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 opacity-0 animate-slide-up stagger-3">
+                        <p class="text-sm text-zinc-500 font-mono mb-1">Платформа</p>
+                        <h4 class="font-medium text-zinc-100">Название пройденного курса</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-24 px-6">
         <div class="max-w-6xl mx-auto">
@@ -645,7 +742,7 @@
             <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
-                    <span class="font-mono text-sm text-accent-primary">03</span>
+                    <span class="font-mono text-sm text-accent-primary">05</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Связаться</h2>
                 <p class="text-zinc-500 max-w-2xl">Открыт к интересным проектам и сотрудничеству</p>
@@ -677,6 +774,18 @@
                     </div>
                     <i data-lucide="arrow-up-right" class="w-5 h-5 text-zinc-600 ml-auto group-hover:text-zinc-400 transition-colors"></i>
                 </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/ev0lv3nta" target="_blank" class="glass-card rounded-2xl p-6 flex items-center gap-4 opacity-0 animate-slide-up stagger-3 transition-all duration-300 hover:scale-[1.02] group">
+                    <div class="w-12 h-12 rounded-xl bg-zinc-500/10 flex items-center justify-center group-hover:bg-zinc-500/20 transition-colors">
+                        <i data-lucide="github" class="w-6 h-6 text-zinc-400"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-zinc-100">GitHub</p>
+                        <p class="text-sm text-zinc-500">@ev0lv3nta</p>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 text-zinc-600 ml-auto group-hover:text-zinc-400 transition-colors"></i>
+                </a>
                 
             </div>
         </div>
@@ -692,6 +801,32 @@
     <!-- Initialize Lucide Icons -->
     <script>
         lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.setAttribute('data-lucide', 'menu');
+                } else {
+                    icon.setAttribute('data-lucide', 'x');
+                }
+                lucide.createIcons();
+            });
+
+            // Close menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.querySelector('i').setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                });
+            });
+        }
         
         // Intersection Observer for animations
         const observerOptions = {
