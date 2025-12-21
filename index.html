@@ -902,8 +902,8 @@
                         <h3 class="text-lg font-medium text-zinc-100">FinTech Analytics Bot</h3>
                         <p class="text-sm text-zinc-500 leading-relaxed">
                             Автоматизация анализа фондового рынка: интеграция с Tinkoff Invest API, парсинг форума
-                            «Пульс» и оценка тональности сообщений с помощью LLM. Расчет технических индикаторов (SMA,
-                            EMA) для генерации торговых саммари.
+                            «Пульс» и оценка тональности сообщений с помощью LLM. Расчет технических индикаторов для
+                            генерации торговых саммари.
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2 pt-2">
@@ -923,55 +923,58 @@
                     class="glass-card rounded-2xl p-6 space-y-4 opacity-0 animate-slide-up stagger-2 group transition-all duration-300">
                     <div
                         class="aspect-video rounded-xl bg-zinc-900/50 border border-zinc-800/50 overflow-hidden relative group-hover:border-accent-primary/30 transition-colors">
-                        <!-- Data Art: Data Stream & Filter -->
+                        <!-- Data Art: News Feed Curation -->
                         <svg viewBox="0 0 400 225" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
                             preserveAspectRatio="xMidYMid slice">
-                            <defs>
-                                <linearGradient id="stream-fade" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0" stop-color="#22d3ee" stop-opacity="0" />
-                                    <stop offset="0.5" stop-color="#22d3ee" stop-opacity="0.8" />
-                                    <stop offset="1" stop-color="#a78bfa" stop-opacity="0" />
-                                </linearGradient>
-                            </defs>
-
                             <rect width="400" height="225" fill="#09090b" />
 
-                            <!-- Data Stream Lines (Static) -->
-                            <g stroke="url(#stream-fade)" stroke-width="2" stroke-linecap="round" opacity="0.5">
-                                <line x1="80" y1="20" x2="80" y2="80" />
-                                <line x1="120" y1="40" x2="120" y2="120" />
-                                <line x1="280" y1="30" x2="280" y2="100" />
-                                <line x1="320" y1="50" x2="320" y2="130" />
-                            </g>
-
-                            <!-- Organized Blocks (Bottom) -->
+                            <!-- Raw Feed (Left) - Multiple cards -->
                             <g fill="#18181b" stroke="#3f3f46" stroke-width="1">
-                                <rect x="60" y="160" width="80" height="40" rx="4" />
-                                <rect x="160" y="160" width="80" height="40" rx="4" />
-                                <rect x="260" y="160" width="80" height="40" rx="4" />
+                                <rect x="30" y="30" width="90" height="50" rx="4" />
+                                <rect x="30" y="90" width="90" height="50" rx="4" />
+                                <rect x="30" y="150" width="90" height="50" rx="4" />
+                            </g>
+                            <!-- Text lines in cards -->
+                            <g stroke="#52525b" stroke-width="2">
+                                <line x1="40" y1="50" x2="100" y2="50" />
+                                <line x1="40" y1="62" x2="80" y2="62" />
+                                <line x1="40" y1="110" x2="100" y2="110" />
+                                <line x1="40" y1="122" x2="85" y2="122" />
+                                <line x1="40" y1="170" x2="100" y2="170" />
+                                <line x1="40" y1="182" x2="90" y2="182" />
                             </g>
 
-                            <!-- Highlight Active Block (Static) -->
-                            <rect x="160" y="160" width="80" height="40" rx="4" fill="#a78bfa" fill-opacity="0.2"
+                            <!-- Filter Arrow -->
+                            <path d="M140 112 L180 112" stroke="#a78bfa" stroke-width="2" />
+                            <path d="M175 107 L185 112 L175 117" fill="#a78bfa" />
+
+                            <!-- Filter Box -->
+                            <rect x="190" y="85" width="60" height="55" rx="6" fill="#a78bfa" fill-opacity="0.1"
                                 stroke="#a78bfa" stroke-width="1" />
+                            <text x="220" y="117" text-anchor="middle" font-family="monospace" font-size="10"
+                                fill="#a78bfa">LLM</text>
 
-                            <!-- Text Placeholders -->
-                            <line x1="70" y1="175" x2="130" y2="175" stroke="#3f3f46" stroke-width="2" />
-                            <line x1="70" y1="185" x2="110" y2="185" stroke="#3f3f46" stroke-width="2" />
+                            <!-- Output Arrow -->
+                            <path d="M260 112 L300 112" stroke="#2dd4bf" stroke-width="2" />
+                            <path d="M295 107 L305 112 L295 117" fill="#2dd4bf" />
 
-                            <line x1="170" y1="175" x2="230" y2="175" stroke="#a78bfa" stroke-width="2" opacity="0.8" />
-                            <line x1="170" y1="185" x2="210" y2="185" stroke="#a78bfa" stroke-width="2" opacity="0.6" />
-
-                            <line x1="270" y1="175" x2="330" y2="175" stroke="#3f3f46" stroke-width="2" />
-                            <line x1="270" y1="185" x2="310" y2="185" stroke="#3f3f46" stroke-width="2" />
+                            <!-- Curated Output (Right) - Single highlighted card -->
+                            <rect x="310" y="70" width="70" height="85" rx="6" fill="#2dd4bf" fill-opacity="0.1"
+                                stroke="#2dd4bf" stroke-width="2" />
+                            <g stroke="#2dd4bf" stroke-width="2" opacity="0.8">
+                                <line x1="320" y1="90" x2="370" y2="90" />
+                                <line x1="320" y1="105" x2="360" y2="105" />
+                                <line x1="320" y1="120" x2="365" y2="120" />
+                            </g>
+                            <!-- Checkmark -->
+                            <path d="M335 135 l5 5 l10 -10" stroke="#2dd4bf" stroke-width="2" fill="none" />
                         </svg>
                     </div>
                     <div class="space-y-2">
                         <h3 class="text-lg font-medium text-zinc-100">AI/ML News Curator</h3>
                         <p class="text-sm text-zinc-500 leading-relaxed">
-                            Интеллектуальный дайджест Reddit: мониторинг профильных сабреддитов через API, фильтрация
-                            шума и суммаризация актуальных новостей в сфере AI/ML и LLM. Автоматическая рассылка
-                            ключевых обновлений технологий.
+                            Интеллектуальный дайджест Reddit: мониторинг профильных сабреддитов, фильтрация
+                            шума и суммаризация ключевых обновлений в AI/ML. Автоматическая рассылка важных инсайтов.
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2 pt-2">
@@ -988,25 +991,112 @@
 
                 <!-- AI/ML Script Guardrails (Hackathon) -->
                 <div
-                    class="glass-card rounded-2xl p-6 space-y-4 opacity-0 animate-slide-up stagger-3 group transition-all duration-300 md:col-span-2">
+                    class="glass-card rounded-2xl p-6 space-y-4 opacity-0 animate-slide-up stagger-3 group transition-all duration-300">
                     <div
-                        class="aspect-video md:aspect-[21/9] rounded-xl bg-zinc-900/50 border border-zinc-800/50 overflow-hidden relative group-hover:border-accent-primary/30 transition-colors">
+                        class="aspect-video rounded-xl bg-zinc-900/50 border border-zinc-800/50 overflow-hidden relative group-hover:border-accent-primary/30 transition-colors">
+                        <!-- Data Art: Face Scan Grid -->
+                        <svg viewBox="0 0 800 300" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="xMidYMid slice">
+                            <rect width="800" height="300" fill="#09090b" />
+
+                            <!-- Avatar Grid (3x2) -->
+                            <!-- Row 1 -->
+                            <g transform="translate(120, 40)">
+                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
+                                    stroke-width="1" />
+                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
+                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
+                            </g>
+                            <g transform="translate(250, 40)">
+                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
+                                    stroke-width="1" />
+                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
+                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
+                            </g>
+                            <!-- MATCH Target -->
+                            <g transform="translate(380, 40)">
+                                <rect width="100" height="100" rx="8" fill="#2dd4bf" fill-opacity="0.1" stroke="#2dd4bf"
+                                    stroke-width="2" />
+                                <circle cx="50" cy="35" r="20" fill="#2dd4bf" fill-opacity="0.3" stroke="#2dd4bf"
+                                    stroke-width="1" />
+                                <path d="M25 75 Q50 90 75 75" fill="#2dd4bf" fill-opacity="0.3" stroke="#2dd4bf"
+                                    stroke-width="1" />
+                                <!-- Corner brackets -->
+                                <path
+                                    d="M0 0 h15 M0 0 v15 M100 0 h-15 M100 0 v15 M0 100 h15 M0 100 v-15 M100 100 h-15 M100 100 v-15"
+                                    stroke="#2dd4bf" stroke-width="2" fill="none" />
+                                <!-- Match label -->
+                                <rect x="15" y="-18" width="70" height="18" rx="4" fill="#2dd4bf" />
+                                <text x="50" y="-5" text-anchor="middle" font-family="monospace" font-size="10"
+                                    fill="#000" font-weight="bold">MATCH</text>
+                            </g>
+                            <g transform="translate(510, 40)">
+                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
+                                    stroke-width="1" />
+                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
+                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
+                            </g>
+
+                            <!-- Row 2 -->
+                            <g transform="translate(185, 160)">
+                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
+                                    stroke-width="1" />
+                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
+                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
+                            </g>
+                            <g transform="translate(315, 160)">
+                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
+                                    stroke-width="1" />
+                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
+                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
+                            </g>
+                            <g transform="translate(445, 160)">
+                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
+                                    stroke-width="1" />
+                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
+                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-medium text-zinc-100">OSINT Face Recognition System</h3>
+                            <span
+                                class="px-2 py-1 rounded text-[10px] font-mono bg-teal-500/10 text-teal-400 border border-teal-500/20">CV
+                                / OSINT</span>
+                        </div>
+                        <p class="text-sm text-zinc-500 leading-relaxed">
+                            Система поиска цифрового следа в социальных сетях.
+                            Высоконагруженный сбор данных (Data Mining), детекция лиц (Face Detection)
+                            и векторный поиск целевых персон (Vector Search) среди десятков тысяч изображений.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span
+                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">OpenCV</span>
+                        <span
+                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">FaceNet</span>
+                        <span
+                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Vector
+                            Search</span>
+                        <span
+                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Data
+                            Mining</span>
+                    </div>
+                </div>
+
+                <!-- AI/ML Script Guardrails (Hackathon) -->
+                <div
+                    class="glass-card rounded-2xl p-6 space-y-4 opacity-0 animate-slide-up stagger-4 group transition-all duration-300">
+                    <div
+                        class="aspect-video rounded-xl bg-zinc-900/50 border border-zinc-800/50 overflow-hidden relative group-hover:border-accent-primary/30 transition-colors">
                         <!-- Data Art: Content Scan -->
                         <svg viewBox="0 0 800 300" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
                             preserveAspectRatio="xMidYMid slice">
-                            <defs>
-                                <linearGradient id="scan-grad" x1="0" y1="0" x2="1" y2="0">
-                                    <stop offset="0" stop-color="#a78bfa" stop-opacity="0" />
-                                    <stop offset="0.5" stop-color="#a78bfa" stop-opacity="0.8" />
-                                    <stop offset="1" stop-color="#a78bfa" stop-opacity="0" />
-                                </linearGradient>
-                            </defs>
-
                             <rect width="800" height="300" fill="#09090b" />
 
                             <!-- Content Blocks -->
                             <g fill="#18181b" stroke="#27272a" stroke-width="1">
-                                <!-- Safe Blocks -->
                                 <rect x="50" y="80" width="120" height="140" rx="8" />
                                 <rect x="200" y="80" width="120" height="140" rx="8" />
                                 <rect x="350" y="80" width="120" height="140" rx="8" />
@@ -1014,26 +1104,21 @@
                                 <rect x="650" y="80" width="120" height="140" rx="8" />
                             </g>
 
-                            <!-- Trigger Block (Highlighted, Static) -->
-                            <rect x="350" y="80" width="120" height="140" rx="8" fill="#a78bfa" fill-opacity="0.2"
+                            <!-- Trigger Block (Highlighted) -->
+                            <rect x="350" y="80" width="120" height="140" rx="8" fill="#a78bfa" fill-opacity="0.15"
                                 stroke="#a78bfa" stroke-width="2" />
 
                             <!-- Dummy Text Lines -->
                             <g stroke="#3f3f46" stroke-width="2">
                                 <line x1="70" y1="110" x2="150" y2="110" />
                                 <line x1="70" y1="130" x2="130" y2="130" />
-
                                 <line x1="220" y1="110" x2="300" y2="110" />
                                 <line x1="220" y1="130" x2="280" y2="130" />
-
-                                <!-- Highlighted Text in Trigger Block -->
                                 <line x1="370" y1="110" x2="450" y2="110" stroke="#a78bfa" />
                                 <line x1="370" y1="130" x2="430" y2="130" stroke="#a78bfa" />
-
                                 <line x1="520" y1="110" x2="600" y2="110" />
                                 <line x1="520" y1="130" x2="580" y2="130" />
                             </g>
-
 
                             <!-- Status Indicators -->
                             <g font-family="monospace" font-size="12" fill="#52525b">
@@ -1055,7 +1140,6 @@
                             Система автоматического определения возрастного рейтинга киносценариев. Гибридная
                             архитектура: <strong>RuBERT-классификатор</strong> для детекции триггеров +
                             <strong>локальная LLM</strong> для генерации рекомендаций по оптимизации контента.
-                            Реализован пайплайн автоматизированной разметки данных через LLM и fine-tuning моделей.
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2 pt-2">
