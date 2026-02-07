@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
     <title>Никитенко Николай | ML Engineer</title>
-
-    <!-- Block search engines -->
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="description"
+        content="Разработка прикладных ML-систем. Computer Vision, NLP, LLM-агенты и анализ данных">
     <meta name="author" content="Никитенко Николай">
 
-    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ev0lv3nta.github.io/">
     <meta property="og:title" content="Никитенко Николай | ML Engineer">
@@ -18,1342 +17,1892 @@
         content="Разработка прикладных ML-систем. Computer Vision, NLP, LLM-агенты и анализ данных">
     <meta property="og:image" content="https://ev0lv3nta.github.io/og-image.png">
 
-    <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="Никитенко Николай | ML Engineer">
     <meta property="twitter:description"
         content="Разработка прикладных ML-систем. Computer Vision, NLP, LLM-агенты и анализ данных">
     <meta property="twitter:image" content="https://ev0lv3nta.github.io/og-image.png">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@200..800&display=swap"
         rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Outfit', 'system-ui', 'sans-serif'],
-                        'mono': ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        'surface': {
-                            '50': '#18181b',
-                            '100': '#1f1f23',
-                            '200': '#27272a',
-                            '300': '#3f3f46',
-                        },
-                        'accent': {
-                            'primary': '#2dd4bf',
-                            'secondary': '#22d3ee',
-                            'glow': 'rgba(45, 212, 191, 0.15)',
-                        }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                        'slide-up': 'slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'gradient': 'gradient 8s ease infinite',
-                        'menu-in': 'menuIn 0.2s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        menuIn: {
-                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        gradient: {
-                            '0%, 100%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg2: #0f0f18;
+            --fg: #f5f3ee;
+            --muted: rgba(245, 243, 238, 0.65);
+            --dim: rgba(245, 243, 238, 0.38);
+            --edge: rgba(245, 243, 238, 0.12);
+
+            --gold: #d4af37;
+            --champagne: #f7e7ce;
+            --ivory: #fffff0;
+            --cyan: #64e9ff;
+            --rose: #ff6b8a;
+            --acid: #b9ff4a;
+
+            --shadow: rgba(0, 0, 0, 0.5);
+            --glass: rgba(10, 10, 20, 0.65);
+            --glass2: rgba(10, 10, 20, 0.35);
+
+            --display: "Playfair Display", ui-serif, Georgia, serif;
+            --elegant: "Cormorant Garamond", ui-serif, Georgia, serif;
+            --mono: "JetBrains Mono", ui-monospace, monospace;
+
+            --r1: 12px;
+            --r2: 20px;
+            --max: 1080px;
+
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @property --wght {
+            syntax: "<number>";
+            inherits: true;
+            initial-value: 420;
+        }
+
         * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse 1200px 900px at 18% 8%, rgba(212, 175, 55, 0.08), transparent 50%),
+                radial-gradient(ellipse 900px 700px at 80% 12%, rgba(100, 233, 255, 0.09), transparent 55%),
+                radial-gradient(ellipse 1000px 800px at 55% 85%, rgba(255, 107, 138, 0.07), transparent 50%),
+                radial-gradient(ellipse 600px 500px at 5% 50%, rgba(185, 255, 74, 0.05), transparent 60%),
+                linear-gradient(180deg, var(--bg), var(--bg2));
+            color: var(--fg);
+            font-family: var(--elegant);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        body {
-            background: #09090b;
-            background-image:
-                radial-gradient(ellipse 100% 60% at 50% -10%, rgba(45, 212, 191, 0.18), transparent 50%),
-                radial-gradient(ellipse 80% 50% at 100% 80%, rgba(34, 211, 238, 0.12), transparent 50%),
-                radial-gradient(ellipse 60% 40% at 0% 60%, rgba(167, 139, 250, 0.10), transparent 50%),
-                radial-gradient(ellipse 50% 30% at 80% 20%, rgba(45, 212, 191, 0.08), transparent 50%),
-                radial-gradient(ellipse 70% 35% at 15% 35%, rgba(45, 212, 191, 0.06), transparent 45%),
-                radial-gradient(ellipse 60% 30% at 85% 55%, rgba(34, 211, 238, 0.05), transparent 45%);
+        ::selection {
+            background: rgba(212, 175, 55, 0.25);
+            color: var(--fg);
         }
 
-        .glass-card {
-            background: linear-gradient(135deg, rgba(39, 39, 42, 0.6) 0%, rgba(24, 24, 27, 0.8) 100%);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(63, 63, 70, 0.5);
+        a {
+            color: inherit;
         }
 
-        .glass-card:hover {
-            border-color: rgba(45, 212, 191, 0.4);
-            box-shadow: 0 0 30px rgba(45, 212, 191, 0.1), 0 0 60px rgba(34, 211, 238, 0.05);
-            transform: translateY(-2px);
+        /* Grain - subtle texture */
+        .grain {
+            position: fixed;
+            inset: -50%;
+            pointer-events: none;
+            opacity: 0.08;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+            transform: rotate(3deg);
+            z-index: 9999;
         }
 
-        .skill-tag {
-            background: linear-gradient(135deg, rgba(39, 39, 42, 0.8) 0%, rgba(31, 31, 35, 0.9) 100%);
-            border: 1px solid rgba(63, 63, 70, 0.6);
-            transition: all 0.3s ease;
+        /* ═══════════════════════════════════════
+           REVEAL ANIMATIONS
+           ═══════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1.4s var(--ease-out-expo), transform 1.6s var(--ease-out-expo);
         }
 
-        .skill-tag:hover {
-            border-color: rgba(45, 212, 191, 0.5);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(45, 212, 191, 0.15);
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #f4f4f5 0%, #2dd4bf 50%, #22d3ee 100%);
-            background-size: 200% 200%;
-            animation: gradient 6s ease infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .reveal-fade {
+            opacity: 0;
+            transition: opacity 1.8s var(--ease-out-quart);
         }
 
-        .accent-gradient {
-            background: linear-gradient(135deg, #2dd4bf 0%, #22d3ee 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .reveal-fade.visible {
+            opacity: 1;
         }
 
-        .achievement-card {
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: opacity 1.4s var(--ease-out-expo), transform 1.6s var(--ease-out-expo);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.4s var(--ease-out-expo);
+        }
+
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger children - dynamic entrance */
+        .stagger-children>* {
+            opacity: 0;
+            transform: translateY(60px) scale(0.94);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.4s var(--ease-out-expo);
+        }
+
+        /* Alternating directions for visual interest */
+        .stagger-children>*:nth-child(odd) {
+            transform: translateY(60px) translateX(-25px) rotate(-1.5deg) scale(0.94);
+        }
+
+        .stagger-children>*:nth-child(even) {
+            transform: translateY(60px) translateX(25px) rotate(1.5deg) scale(0.94);
+        }
+
+        /* Staggered delays */
+        .stagger-children.visible>*:nth-child(1) {
+            transition-delay: 0ms;
+        }
+
+        .stagger-children.visible>*:nth-child(2) {
+            transition-delay: 180ms;
+        }
+
+        .stagger-children.visible>*:nth-child(3) {
+            transition-delay: 360ms;
+        }
+
+        .stagger-children.visible>*:nth-child(4) {
+            transition-delay: 540ms;
+        }
+
+        .stagger-children.visible>*:nth-child(5) {
+            transition-delay: 720ms;
+        }
+
+        .stagger-children.visible>*:nth-child(6) {
+            transition-delay: 900ms;
+        }
+
+        .stagger-children.visible>*:nth-child(7) {
+            transition-delay: 1080ms;
+        }
+
+        .stagger-children.visible>*:nth-child(8) {
+            transition-delay: 1260ms;
+        }
+
+        .stagger-children.visible>* {
+            opacity: 1;
+            transform: translateY(0) translateX(0) rotate(0) scale(1);
+        }
+
+        /* Line reveal animation */
+        .line-reveal {
             position: relative;
             overflow: hidden;
         }
 
-        .achievement-card::before {
+        .line-reveal::after {
             content: '';
             position: absolute;
             left: 0;
-            top: 0;
             bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #2dd4bf 0%, #22d3ee 50%, #a78bfa 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1.2s var(--ease-out-expo);
         }
 
-        .achievement-card:hover::before {
+        .line-reveal.visible::after {
+            transform: scaleX(1);
+        }
+
+        /* Experience items - slide from left with timeline effect */
+        .exp-list.reveal .exp-item {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.5s var(--ease-out-expo);
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(1) {
+            transition-delay: 0ms;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(2) {
+            transition-delay: 250ms;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(3) {
+            transition-delay: 500ms;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(4) {
+            transition-delay: 750ms;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(5) {
+            transition-delay: 1000ms;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(6) {
+            transition-delay: 1250ms;
+        }
+
+        .exp-list.reveal.visible .exp-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Timeline dot animation */
+        .exp-list.reveal .exp-item::before {
+            transform: scale(0);
+            transition: transform 0.5s var(--ease-out-expo), background 0.4s, box-shadow 0.4s;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(1)::before {
+            transition-delay: 200ms;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(2)::before {
+            transition-delay: 350ms;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(3)::before {
+            transition-delay: 500ms;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(4)::before {
+            transition-delay: 650ms;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(5)::before {
+            transition-delay: 800ms;
+        }
+
+        .exp-list.reveal.visible .exp-item:nth-child(6)::before {
+            transition-delay: 950ms;
+        }
+
+        .exp-list.reveal.visible .exp-item::before {
+            transform: scale(1);
+        }
+
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ═══════════════════════════════════════
+           TOPBAR
+           ═══════════════════════════════════════ */
+        .topbar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 50;
+            padding: 16px 0;
+            background: linear-gradient(180deg, rgba(6, 6, 8, 0.92), rgba(6, 6, 8, 0.4));
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--edge);
+        }
+
+        .topbar .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .brand:hover {
+            opacity: 0.8;
+        }
+
+        .brand-dot {
+            display: flex;
+            gap: 3px;
+            align-items: flex-end;
+        }
+
+        .brand-dot::before,
+        .brand-dot::after,
+        .brand-dot span {
+            content: '';
+            width: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .brand-dot::before {
+            height: 8px;
+        }
+
+        .brand-dot span {
+            height: 14px;
+        }
+
+        .brand-dot::after {
+            height: 10px;
+        }
+
+        .brand-text {
+            font-family: var(--display);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav {
+            display: flex;
+            gap: 4px;
+        }
+
+        .nav a {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 2px;
+            border: 1px solid transparent;
+            opacity: 0.6;
+            transition: all 0.35s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 6px;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: all 0.35s var(--ease-out-expo);
+            transform: translateX(-50%);
+        }
+
+        .nav a:hover {
             opacity: 1;
         }
 
-        .status-indicator {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        .nav a:hover::after {
+            width: 20px;
         }
 
-        @keyframes pulse {
+        /* ═══════════════════════════════════════
+           HERO
+           ═══════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding: 140px 0 80px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Elegant decorative lines */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--edge) 20%, var(--edge) 80%, transparent 100%);
+            transform: translateY(-50%);
+            opacity: 0.5;
+        }
+
+        /* Header accent line - animated gradient */
+        .header-accent {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .header-accent::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--edge) 15%,
+                    var(--gold) 50%,
+                    var(--edge) 85%,
+                    transparent 100%);
+            animation: accent-shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes accent-shimmer {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scaleX(0.6);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        .hero-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* Kicker - refined */
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .kicker .chip {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            animation: pulse-gold 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-gold {
 
             0%,
             100% {
                 opacity: 1;
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
             }
 
             50% {
-                opacity: 0.5;
+                opacity: 0.7;
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
             }
         }
 
-        .scan-beam {
-            animation: scan 5s linear infinite;
-            will-change: transform;
+        .kicker b {
+            color: var(--gold);
+            font-weight: 600;
         }
 
-        @keyframes scan {
+        /* Headline - Classic Typography */
+        .headline {
+            font-family: var(--elegant);
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            line-height: 1.1;
+            font-size: clamp(52px, 6vw, 88px);
+            margin-bottom: 24px;
+        }
+
+        .word {
+            display: inline-block;
+            position: relative;
+        }
+
+        .char {
+            display: inline-block;
+            transform: translateY(20px);
+            opacity: 0;
+            filter: blur(8px);
+            animation: char-rise 1s var(--ease-out-expo) forwards;
+            animation-delay: calc(var(--d, 0) * 35ms + 100ms);
+            will-change: transform, opacity, filter;
+        }
+
+        @keyframes char-rise {
+            to {
+                opacity: 1;
+                filter: blur(0);
+                transform: translateY(0);
+            }
+        }
+
+        /* Gentle floating for accent word */
+        .word[data-pulse="1"] .char {
+            animation: char-rise 1s var(--ease-out-expo) forwards,
+                gentle-float 4s ease-in-out infinite;
+            animation-delay: calc(var(--d, 0) * 35ms + 100ms), calc(var(--d, 0) * 20ms + 1100ms);
+        }
+
+        @keyframes gentle-float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-3px);
+            }
+        }
+
+        .headline .accent {
+            color: var(--fg);
+            font-style: normal;
+            opacity: 0.85;
+        }
+
+        .headline .whisper {
+            display: block;
+            margin-top: 16px;
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--dim);
+        }
+
+        .sub {
+            max-width: 52ch;
+            color: var(--muted);
+            font-family: var(--elegant);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.75;
+            margin-bottom: 32px;
+        }
+
+        .sub strong {
+            color: var(--fg);
+            font-weight: 500;
+        }
+
+        /* CTA Row - Elegant Buttons */
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 2px;
+            border: 1px solid var(--edge);
+            background: transparent;
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out-expo);
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .btn:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary {
+            border-color: rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), transparent);
+        }
+
+        .btn-primary:hover {
+            border-color: var(--gold);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Meta Cards - Refined */
+        .meta-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .meta {
+            padding: 20px;
+            border-radius: var(--r1);
+            border: 1px solid var(--edge);
+            background: rgba(6, 6, 8, 0.5);
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .meta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .meta:hover::before {
+            opacity: 1;
+        }
+
+        .meta:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .meta .label {
+            font-family: var(--mono);
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--dim);
+        }
+
+        .meta .value {
+            margin-top: 8px;
+            font-family: var(--display);
+            font-weight: 500;
+            font-size: 17px;
+            letter-spacing: 0;
+        }
+
+        .meta .value i {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        /* Hero Right - Status Card */
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .status-card {
+            padding: 28px;
+            border-radius: var(--r1);
+            border: 1px solid var(--edge);
+            background: rgba(6, 6, 8, 0.6);
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .status-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold), transparent);
+            border-radius: 2px;
+        }
+
+        .status-card:hover {
+            transform: translateX(8px);
+            border-color: rgba(212, 175, 55, 0.25);
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+            animation: pulse-gold 3s ease-in-out infinite;
+        }
+
+        .status-date {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--dim);
+        }
+
+        .status-title {
+            font-family: var(--display);
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .status-desc {
+            font-family: var(--elegant);
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ═══════════════════════════════════════
+           MARQUEE - Elegant Divider
+           ═══════════════════════════════════════ */
+        .marquee {
+            position: relative;
+            padding: 28px 0;
+            border-top: 1px solid var(--edge);
+            border-bottom: 1px solid var(--edge);
+            overflow: hidden;
+            background: linear-gradient(90deg,
+                    rgba(15, 15, 20, 0.95) 0%,
+                    rgba(20, 20, 30, 0.9) 50%,
+                    rgba(15, 15, 20, 0.95) 100%);
+        }
+
+        /* Fade edges */
+        .marquee::before,
+        .marquee::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 150px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .marquee::before {
+            left: 0;
+            background: linear-gradient(90deg, var(--bg), transparent);
+        }
+
+        .marquee::after {
+            right: 0;
+            background: linear-gradient(-90deg, var(--bg), transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 80px;
+            white-space: nowrap;
+            animation: slide 40s linear infinite;
+        }
+
+        .marquee-track span {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            font-family: var(--display);
+            font-size: 16px;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+        }
+
+        .marquee-track b {
+            color: var(--gold);
+            font-weight: 500;
+            font-style: normal;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .marquee-track i {
+            color: var(--cyan);
+            font-style: normal;
+            font-weight: 500;
+            text-shadow: 0 0 20px rgba(125, 211, 232, 0.3);
+        }
+
+        @keyframes slide {
             from {
-                transform: translateX(-100px);
+                transform: translateX(0);
             }
 
             to {
-                transform: translateX(900px);
+                transform: translateX(-50%);
             }
         }
 
-        .stagger-1 {
-            animation-delay: 0.1s;
+        /* ═══════════════════════════════════════
+           SECTIONS
+           ═══════════════════════════════════════ */
+        section {
+            padding: 100px 0;
         }
 
-        .stagger-2 {
-            animation-delay: 0.2s;
-        }
-
-        .stagger-3 {
-            animation-delay: 0.3s;
-        }
-
-        .stagger-4 {
-            animation-delay: 0.4s;
-        }
-
-        .stagger-5 {
-            animation-delay: 0.5s;
-        }
-
-        .stagger-6 {
-            animation-delay: 0.6s;
-        }
-
-        .stagger-7 {
-            animation-delay: 0.7s;
-        }
-
-        .stagger-8 {
-            animation-delay: 0.8s;
-        }
-
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #18181b;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #3f3f46;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #52525b;
-        }
-
-        /* Dot pattern background */
-        .noise-bg::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.4;
-            background-image: radial-gradient(circle, rgba(63, 63, 70, 0.8) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-
-        .noise-bg>* {
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 24px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
             position: relative;
-            z-index: 2;
+        }
+
+        .section-head::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -16px;
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .h2 {
+            font-family: var(--display);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            line-height: 1.15;
+        }
+
+        .h2 .aside {
+            display: block;
+            font-family: var(--mono);
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--dim);
+            margin-top: 12px;
+        }
+
+        /* ═══════════════════════════════════════
+           SKILLS GRID - Elegant
+           ═══════════════════════════════════════ */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 32px;
+            border-radius: var(--r1);
+            border: 1px solid var(--edge);
+            background: rgba(6, 6, 8, 0.4);
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 0;
+            width: 3px;
+            height: 24px;
+            background: var(--gold);
+            border-radius: 0 2px 2px 0;
+            opacity: 0;
+            transform: scaleY(0);
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        .card:hover {
+            transform: translateX(8px);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .card .num {
+            font-family: var(--display);
+            font-size: 32px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--gold);
+            opacity: 0.4;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .card h3 {
+            font-family: var(--display);
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 18px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-family: var(--mono);
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            padding: 6px 12px;
+            border-radius: 2px;
+            border: 1px solid var(--edge);
+            background: transparent;
+            color: var(--muted);
+            transition: all 0.35s var(--ease-out-expo);
+        }
+
+        .tag:hover {
+            border-color: var(--gold);
+            color: var(--fg);
+        }
+
+        /* ═══════════════════════════════════════
+           EXPERIENCE - Timeline Style
+           ═══════════════════════════════════════ */
+        .exp-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+        }
+
+        .exp-list::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 24px;
+            bottom: 24px;
+            width: 1px;
+            background: linear-gradient(180deg, var(--gold), var(--edge), transparent);
+        }
+
+        .exp-item {
+            padding: 28px 0 28px 32px;
+            border-bottom: 1px solid var(--edge);
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 36px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            border: 2px solid var(--bg);
+            background: var(--edge);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .exp-item:hover::before {
+            background: var(--gold);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+        }
+
+        .exp-item:hover {
+            padding-left: 40px;
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+        }
+
+        .exp-item.current::before {
+            background: var(--gold);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .exp-title {
+            font-family: var(--display);
+            font-size: 19px;
+            font-weight: 500;
+        }
+
+        .exp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .exp-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+            animation: pulse-gold 3s ease-in-out infinite;
+        }
+
+        .exp-date {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--dim);
+        }
+
+        .exp-desc {
+            font-family: var(--elegant);
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 600px;
+            margin-bottom: 14px;
+        }
+
+        .exp-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .exp-tag {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.05em;
+            padding: 5px 10px;
+            border: 1px solid var(--edge);
+            border-radius: 2px;
+            color: var(--dim);
+            transition: all 0.3s;
+        }
+
+        .exp-tag:hover {
+            border-color: var(--gold);
+            color: var(--fg);
+        }
+
+        /* ═══════════════════════════════════════
+           PROJECTS - Elegant Cards
+           ═══════════════════════════════════════ */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            padding: 32px;
+            border-radius: var(--r1);
+            border: 1px solid var(--edge);
+            background: rgba(6, 6, 8, 0.4);
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 32px;
+            right: 32px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transform: scaleX(0);
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+            transform: translateY(-6px);
+        }
+
+        .project-title {
+            font-family: var(--display);
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .project-desc {
+            font-family: var(--elegant);
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* ═══════════════════════════════════════
+           EDUCATION - Refined
+           ═══════════════════════════════════════ */
+        .edu-main {
+            padding: 32px;
+            border-radius: var(--r1);
+            border: 1px solid var(--edge);
+            background: rgba(6, 6, 8, 0.4);
+            position: relative;
+            margin-bottom: 24px;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .edu-main::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 24px;
+            bottom: 24px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold), transparent);
+            border-radius: 2px;
+        }
+
+        .edu-main:hover {
+            transform: translateX(8px);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .edu-title {
+            font-family: var(--display);
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .edu-spec {
+            font-family: var(--elegant);
+            font-size: 16px;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+
+        .edu-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: var(--dim);
+        }
+
+        .edu-note::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            opacity: 0.6;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .course-card {
+            padding: 20px;
+            border-radius: var(--r1);
+            border: 1px solid var(--edge);
+            background: rgba(6, 6, 8, 0.3);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .course-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .course-org {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--dim);
+            margin-bottom: 6px;
+        }
+
+        .course-name {
+            font-family: var(--display);
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════════
+           CONTACT - Elegant
+           ═══════════════════════════════════════ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px 28px;
+            border-radius: var(--r1);
+            border: 1px solid var(--edge);
+            background: rgba(6, 6, 8, 0.4);
+            text-decoration: none;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .contact-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateX(8px);
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 1px solid var(--edge);
+            font-size: 18px;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .contact-card:hover .contact-icon {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .contact-label {
+            font-family: var(--display);
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .contact-value {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--dim);
+            margin-top: 2px;
+        }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════ */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--edge);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            color: var(--dim);
+        }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════ */
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exp-list::before {
+                display: none;
+            }
+
+            .exp-item {
+                padding-left: 0;
+            }
+
+            .exp-item::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav {
+                display: none;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .meta-row {
+                grid-template-columns: 1fr;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 0;
+            }
         }
     </style>
 </head>
 
-<body class="min-h-screen text-zinc-300 font-sans noise-bg">
+<body>
+    <div class="grain"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
-        <div class="max-w-6xl mx-auto">
-            <div class="glass-card rounded-2xl px-6 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-2 h-2 rounded-full bg-teal-400 status-indicator"></div>
-                    <span class="font-mono text-sm text-zinc-400 uppercase tracking-wider">Moscow, RU</span>
-                </div>
-                <div class="hidden sm:flex items-center gap-6">
-                    <a href="#skills" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Навыки</a>
-                    <a href="#experience" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Опыт</a>
-                    <a href="#projects" class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Проекты</a>
-                    <a href="#education"
-                        class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">Образование</a>
-                </div>
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="sm:hidden p-2 text-zinc-400 hover:text-zinc-100 transition-colors">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="wrap">
+            <a href="#" class="brand">
+                <span class="brand-dot"><span></span></span>
+            </a>
+            <nav class="nav">
+                <a href="#skills">Навыки</a>
+                <a href="#experience">Опыт</a>
+                <a href="#projects">Проекты</a>
+                <a href="#contact">Связаться</a>
+            </nav>
         </div>
-        <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="hidden sm:hidden mt-2 max-w-6xl mx-auto px-6">
-            <div class="bg-zinc-950 rounded-2xl p-4 flex flex-col gap-4 shadow-2xl border border-zinc-800">
-                <a href="#skills"
-                    class="text-sm text-zinc-400 hover:text-zinc-100 py-2 border-b border-zinc-800/50 transition-colors">Навыки</a>
-                <a href="#experience"
-                    class="text-sm text-zinc-400 hover:text-zinc-100 py-2 border-b border-zinc-800/50 transition-colors">Опыт</a>
-                <a href="#projects"
-                    class="text-sm text-zinc-400 hover:text-zinc-100 py-2 border-b border-zinc-800/50 transition-colors">Проекты</a>
-                <a href="#education"
-                    class="text-sm text-zinc-400 hover:text-zinc-100 py-2 transition-colors">Образование</a>
-            </div>
-        </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="flex items-center justify-center px-6 pt-28 pb-16" style="min-height: min(100vh, 900px);">
-        <div class="max-w-6xl mx-auto w-full">
-            <div class="grid lg:grid-cols-12 gap-8 items-center">
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="header-accent" aria-hidden="true"></div>
 
-                <!-- Main Hero Content -->
-                <div class="lg:col-span-7 space-y-8 opacity-0 animate-slide-up">
+            <div class="wrap">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="kicker">
+                            <span class="chip"></span>
+                            <span>ML Engineer & <b>Data Analyst</b></span>
+                        </div>
 
-                    <!-- Title -->
-                    <div class="space-y-4">
-                        <h1
-                            class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight gradient-text leading-tight">
-                            Никитенко Николай
+                        <h1 class="headline">
+                            <span class="word" data-pulse="1">Никитенко</span>
+                            <span class="word accent" data-pulse="1">Николай</span>
+                            <span class="whisper">Разработка прикладных ML-систем · Computer Vision · NLP ·
+                                LLM-агенты</span>
                         </h1>
-                        <p class="text-xl sm:text-2xl text-zinc-500 font-light">
-                            ML Engineer & Data Analyst
+
+                        <p class="sub">
+                            <strong>Applied ML</strong>: разработка и внедрение моделей машинного обучения
+                            для решения бизнес-задач и автоматизации
                         </p>
-                    </div>
 
-                    <!-- Description -->
-                    <p class="text-lg text-zinc-400 leading-relaxed max-w-xl">
-                        Applied ML: разработка и внедрение моделей машинного обучения
-                        для решения бизнес-задач и автоматизации
-                    </p>
-
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#experience"
-                            class="group inline-flex items-center gap-2 px-6 py-3 bg-zinc-100 text-zinc-900 rounded-xl font-medium hover:bg-white transition-all">
-                            <span>Опыт и проекты</span>
-                            <i data-lucide="arrow-right"
-                                class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                        <a href="#contact"
-                            class="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-xl font-medium hover:border-zinc-600 transition-all">
-                            <i data-lucide="mail" class="w-4 h-4"></i>
-                            <span>Связаться</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Stats Cards -->
-                <div class="lg:col-span-5 grid grid-cols-2 gap-4 opacity-0 animate-slide-up stagger-2">
-
-                    <div class="glass-card rounded-2xl p-6 space-y-3 transition-all duration-300">
-                        <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center">
-                            <i data-lucide="brain" class="w-5 h-5 text-teal-400"></i>
+                        <div class="cta-row">
+                            <a href="#experience" class="btn btn-primary">Опыт и проекты</a>
+                            <a href="#contact" class="btn">Связаться</a>
                         </div>
-                        <div class="space-y-1">
-                            <p class="text-xl sm:text-2xl font-semibold text-zinc-100">Applied ML</p>
-                            <p class="text-sm text-zinc-500">CV & NLP</p>
-                        </div>
-                    </div>
 
-                    <div class="glass-card rounded-2xl p-6 space-y-3 transition-all duration-300">
-                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center">
-                            <i data-lucide="bot" class="w-5 h-5 text-cyan-400"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-xl sm:text-2xl font-semibold text-zinc-100">Automation</p>
-                            <p class="text-sm text-zinc-500">Async Services</p>
-                        </div>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6 space-y-3 transition-all duration-300">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                            <i data-lucide="server" class="w-5 h-5 text-emerald-400"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-xl sm:text-2xl font-semibold text-zinc-100">Linux</p>
-                            <p class="text-sm text-zinc-500">Setup & Ops</p>
-                        </div>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6 space-y-3 transition-all duration-300">
-                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
-                            <i data-lucide="database" class="w-5 h-5 text-amber-400"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-xl sm:text-2xl font-semibold text-zinc-100">Data Engineering</p>
-                            <p class="text-sm text-zinc-500">Pipelines & SQL</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-
-            <!-- Section Header -->
-            <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
-                    <span class="font-mono text-sm text-accent-primary">01</span>
-                </div>
-                <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Технологический стек</h2>
-
-            </div>
-
-            <!-- Skills Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- ML & AI -->
-                <div
-                    class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-1 transition-all duration-300">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center">
-                            <i data-lucide="sparkles" class="w-5 h-5 text-violet-400"></i>
-                        </div>
-                        <h3 class="text-lg font-medium text-zinc-100">ML & DS</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Python</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">PyTorch</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">YOLO</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Computer
-                            Vision</span>
-                        <span
-                            class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Transformers</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">NLP</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Time
-                            Series</span>
-                        <span
-                            class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Forecasting</span>
-                        <span
-                            class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Scikit-learn</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">OpenCV</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">SAM</span>
-                    </div>
-                </div>
-
-                <!-- LLM & RAG -->
-                <div
-                    class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-2 transition-all duration-300">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                            <i data-lucide="message-square" class="w-5 h-5 text-blue-400"></i>
-                        </div>
-                        <h3 class="text-lg font-medium text-zinc-100">LLM & RAG</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">LangChain</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">LangGraph</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">RAG</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">LLM APIs</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Local LLM</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">VLM</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Embeddings</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Vector DB</span>
-                    </div>
-                </div>
-
-                <!-- Telegram & Bots -->
-                <div
-                    class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-3 transition-all duration-300">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center">
-                            <i data-lucide="send" class="w-5 h-5 text-cyan-400"></i>
-                        </div>
-                        <h3 class="text-lg font-medium text-zinc-100">Telegram & Bots</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Aiogram</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Telegram Bot
-                            API</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Asyncpg</span>
-                    </div>
-                </div>
-
-                <!-- Data & ETL -->
-                <div
-                    class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-4 transition-all duration-300">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
-                            <i data-lucide="database" class="w-5 h-5 text-amber-400"></i>
-                        </div>
-                        <h3 class="text-lg font-medium text-zinc-100">Data & ETL</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Pandas</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">PostgreSQL</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">ETL</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">DWH</span>
-                    </div>
-                </div>
-
-                <!-- Infrastructure -->
-                <div
-                    class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-5 transition-all duration-300">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                            <i data-lucide="server" class="w-5 h-5 text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-medium text-zinc-100">Infrastructure</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Linux</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Docker</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Nginx</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Git</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">SSH</span>
-                    </div>
-                </div>
-
-                <!-- Monitoring -->
-                <div
-                    class="glass-card rounded-2xl p-6 space-y-5 opacity-0 animate-slide-up stagger-6 transition-all duration-300">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center">
-                            <i data-lucide="activity" class="w-5 h-5 text-rose-400"></i>
-                        </div>
-                        <h3 class="text-lg font-medium text-zinc-100">Monitoring</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Grafana</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-sm text-zinc-300 font-mono">Dashboards</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-
-            <!-- Section Header -->
-            <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
-                    <span class="font-mono text-sm text-accent-primary">02</span>
-                </div>
-                <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Ключевой опыт</h2>
-
-            </div>
-
-            <!-- Experience Grid -->
-            <div class="grid gap-6">
-
-                <!-- Current Professional Experience -->
-                <div
-                    class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-1 border-l-2 border-accent-primary/50 transition-all duration-300">
-                    <div class="flex flex-col md:flex-row justify-between items-start gap-6">
-                        <div class="space-y-4 flex-1">
-                            <div class="flex flex-wrap items-center gap-3">
-                                <h3 class="text-2xl font-bold text-zinc-100 tracking-tight">Applied ML Engineer</h3>
-                                <div
-                                    class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                                    <span
-                                        class="text-[10px] font-medium text-emerald-400 uppercase tracking-wider">Текущая
-                                        должность</span>
-                                </div>
+                        <div class="meta-row">
+                            <div class="meta">
+                                <div class="label">Стек</div>
+                                <div class="value">Python, <i>PyTorch</i></div>
                             </div>
+                            <div class="meta">
+                                <div class="label">Фокус</div>
+                                <div class="value">CV & <i>NLP</i></div>
+                            </div>
+                            <div class="meta">
+                                <div class="label">Опыт</div>
+                                <div class="value"><i>Applied</i> ML</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-right">
+                        <div class="status-card">
+                            <div class="status-header">
+                                <span class="status-badge">Текущая должность</span>
+                                <span class="status-date">Июнь 2025 — Present</span>
+                            </div>
+                            <h3 class="status-title">Applied ML Engineer</h3>
+                            <p class="status-desc">
+                                Занимаюсь разработкой ML-сервисов, аналитикой и автоматизацией процессов
+                                для компаний в сфере FMCG и промышленности
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee -->
+        <div class="marquee">
+            <div class="marquee-track">
+                <span><b>Applied ML</b> · Computer Vision · NLP · <i>LLM & RAG</i> · Data Engineering ·
+                    Automation</span>
+                <span><b>Applied ML</b> · Computer Vision · NLP · <i>LLM & RAG</i> · Data Engineering ·
+                    Automation</span>
+                <span><b>Applied ML</b> · Computer Vision · NLP · <i>LLM & RAG</i> · Data Engineering ·
+                    Automation</span>
+                <span><b>Applied ML</b> · Computer Vision · NLP · <i>LLM & RAG</i> · Data Engineering ·
+                    Automation</span>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <section id="skills">
+            <div class="wrap">
+                <div class="section-head reveal-left line-reveal">
+                    <h2 class="h2">Технологический стек<span class="aside">Инструменты и технологии</span></h2>
+                </div>
+
+                <div class="grid-3 stagger-children">
+                    <div class="card">
+                        <div class="num">01</div>
+                        <h3>ML & DS</h3>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">YOLO</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Transformers</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Time Series</span>
+                            <span class="tag">Forecasting</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">SAM</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="num">02</div>
+                        <h3>LLM & RAG</h3>
+                        <div class="tags">
+                            <span class="tag">LangChain</span>
+                            <span class="tag">LangGraph</span>
+                            <span class="tag">RAG</span>
+                            <span class="tag">LLM APIs</span>
+                            <span class="tag">Local LLM</span>
+                            <span class="tag">VLM</span>
+                            <span class="tag">Embeddings</span>
+                            <span class="tag">Vector DB</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="num">03</div>
+                        <h3>Telegram & Bots</h3>
+                        <div class="tags">
+                            <span class="tag">Aiogram</span>
+                            <span class="tag">Telegram Bot API</span>
+                            <span class="tag">Asyncpg</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="num">04</div>
+                        <h3>Data & ETL</h3>
+                        <div class="tags">
+                            <span class="tag">Pandas</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">ETL</span>
+                            <span class="tag">DWH</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="num">05</div>
+                        <h3>Infrastructure</h3>
+                        <div class="tags">
+                            <span class="tag">Linux</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Nginx</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">SSH</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="num">06</div>
+                        <h3>Monitoring</h3>
+                        <div class="tags">
+                            <span class="tag">Grafana</span>
+                            <span class="tag">Dashboards</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">
+            <div class="wrap">
+                <div class="section-head reveal-left line-reveal">
+                    <h2 class="h2">Ключевой опыт<span class="aside">Проекты и достижения</span></h2>
+                </div>
+
+                <div class="exp-list reveal">
+                    <div class="exp-item current">
+                        <div class="exp-header">
                             <div>
-
-                                <p class="text-zinc-400 leading-relaxed mt-2 max-w-3xl">
-                                    Занимаюсь разработкой ML-сервисов, аналитикой и автоматизацией процессов
-                                    для компаний в сфере FMCG и промышленности
-                                </p>
+                                <h3 class="exp-title">Applied ML Engineer</h3>
+                                <span class="exp-badge">Текущая должность</span>
                             </div>
+                            <span class="exp-date">Июнь 2025 — Present</span>
                         </div>
-                        <div class="flex-shrink-0 text-right">
-                            <div class="inline-block px-3 py-1 rounded-lg bg-zinc-800/50 border border-zinc-700/50">
-                                <span class="font-mono text-sm text-zinc-300">Июнь 2025 — Present</span>
-                            </div>
+                        <p class="exp-desc">
+                            Занимаюсь разработкой ML-сервисов, аналитикой и автоматизацией процессов для компаний в
+                            сфере
+                            FMCG и промышленности
+                        </p>
+                    </div>
+
+                    <div class="exp-item">
+                        <h3 class="exp-title">Computer Vision для производственного мониторинга</h3>
+                        <p class="exp-desc">Разработка модулей видеоаналитики: real-time детекция объектов, интеграция с
+                            видеопотоками, оптимизация инференса. Адаптация и дообучение моделей под специфику задач</p>
+                        <div class="exp-tags">
+                            <span class="exp-tag">PyTorch</span>
+                            <span class="exp-tag">YOLO</span>
+                            <span class="exp-tag">Real-time CV</span>
+                            <span class="exp-tag">Video Processing</span>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <h3 class="exp-title">Data-Centric ML Pipeline</h3>
+                        <p class="exp-desc">Автоматизация подготовки данных для CV-задач: полуавтоматическая разметка и
+                            сегментация. Ускорение дообучения моделей под новые задачи</p>
+                        <div class="exp-tags">
+                            <span class="exp-tag">Data Pipeline</span>
+                            <span class="exp-tag">Segmentation</span>
+                            <span class="exp-tag">Auto-labeling</span>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <h3 class="exp-title">Automation Services</h3>
+                        <p class="exp-desc">Разработка асинхронных сервисов для автоматизации рутинных процессов: сбор
+                            данных, уведомления, формирование отчётов</p>
+                        <div class="exp-tags">
+                            <span class="exp-tag">Async</span>
+                            <span class="exp-tag">Python</span>
+                            <span class="exp-tag">Automation</span>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <h3 class="exp-title">LLM-based Knowledge Retrieval</h3>
+                        <p class="exp-desc">Реализация RAG-системы для семантического поиска по текстовым данным.
+                            Векторное хранилище, чанкинг документов, генерация ответов с контекстом</p>
+                        <div class="exp-tags">
+                            <span class="exp-tag">RAG</span>
+                            <span class="exp-tag">LLM</span>
+                            <span class="exp-tag">Vector DB</span>
+                            <span class="exp-tag">Embeddings</span>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <h3 class="exp-title">ETL & Data Infrastructure</h3>
+                        <p class="exp-desc">Построение автоматизированных ETL-пайплайнов для обработки и трансформации
+                            данных. Интеграция с BI-системами для аналитики и визуализации</p>
+                        <div class="exp-tags">
+                            <span class="exp-tag">Parquet</span>
+                            <span class="exp-tag">Systemd Timers</span>
+                            <span class="exp-tag">Automated Pipelines</span>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <h3 class="exp-title">DWH & Analytics</h3>
+                        <p class="exp-desc">Проектирование схем данных и витрин. Миграция исторических данных в
+                            структурированное хранилище для построения BI-отчетности</p>
+                        <div class="exp-tags">
+                            <span class="exp-tag">PostgreSQL</span>
+                            <span class="exp-tag">Data Marts</span>
+                            <span class="exp-tag">Migrations</span>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <h3 class="exp-title">On-premise ML Platform</h3>
+                        <p class="exp-desc">Настройка и поддержка Linux-серверов. Деплой и мониторинг фоновых сервисов,
+                            интеграция с внутренними системами</p>
+                        <div class="exp-tags">
+                            <span class="exp-tag">Linux</span>
+                            <span class="exp-tag">Systemd</span>
+                            <span class="exp-tag">On-premise</span>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <h3 class="exp-title">BI & Observability</h3>
+                        <p class="exp-desc">Разработка веб-платформы и дашбордов с кастомизацией UI для мониторинга и
+                            визуализации данных в реальном времени</p>
+                        <div class="exp-tags">
+                            <span class="exp-tag">Nginx</span>
+                            <span class="exp-tag">UI/UX Design</span>
+                            <span class="exp-tag">Dashboards</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- ML Infrastructure -->
-                <div
-                    class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-2 transition-all duration-300">
-                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500/20 to-purple-500/10 flex items-center justify-center">
-                                <i data-lucide="eye" class="w-7 h-7 text-violet-400"></i>
-                            </div>
-                        </div>
-                        <div class="space-y-4 flex-1">
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                                <h3 class="text-xl font-semibold text-zinc-100">Computer Vision для производственного
-                                    мониторинга</h3>
-                                <span
-                                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-violet-500/10 text-violet-400 border border-violet-500/20 w-fit">
-                                    Industrial
-                                </span>
-                            </div>
-                            <p class="text-zinc-400 leading-relaxed">
-                                Разработка модулей видеоаналитики: real-time детекция объектов, интеграция с
-                                видеопотоками, оптимизация инференса. Адаптация и дообучение моделей под специфику задач
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">PyTorch</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">YOLO</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Real-time
-                                    CV</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Video
-                                    Processing</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Auto Labeling -->
-                <div
-                    class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-3 transition-all duration-300">
-                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/10 flex items-center justify-center">
-                                <i data-lucide="wand-2" class="w-7 h-7 text-blue-400"></i>
-                            </div>
-                        </div>
-                        <div class="space-y-4 flex-1">
-                            <h3 class="text-xl font-semibold text-zinc-100">Data-Centric ML Pipeline</h3>
-                            <p class="text-zinc-400 leading-relaxed">
-                                Автоматизация подготовки данных для CV-задач: полуавтоматическая разметка и сегментация.
-                                Ускорение дообучения моделей под новые задачи
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Data
-                                    Pipeline</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Segmentation</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Auto-labeling</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Telegram Ecosystem -->
-                <div
-                    class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-4 transition-all duration-300">
-                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-teal-500/10 flex items-center justify-center">
-                                <i data-lucide="bot" class="w-7 h-7 text-cyan-400"></i>
-                            </div>
-                        </div>
-                        <div class="space-y-4 flex-1">
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                                <h3 class="text-xl font-semibold text-zinc-100">Automation Services</h3>
-                                <span
-                                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 w-fit">
-                                    Async
-                                </span>
-                            </div>
-                            <p class="text-zinc-400 leading-relaxed">
-                                Разработка асинхронных сервисов для автоматизации рутинных процессов: сбор данных,
-                                уведомления, формирование отчётов
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Async</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Python</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Automation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RAG System -->
-                <div
-                    class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-5 transition-all duration-300">
-                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/10 flex items-center justify-center">
-                                <i data-lucide="brain" class="w-7 h-7 text-amber-400"></i>
-                            </div>
-                        </div>
-                        <div class="space-y-4 flex-1">
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                                <h3 class="text-xl font-semibold text-zinc-100">LLM-based Knowledge Retrieval</h3>
-                                <span
-                                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 w-fit">
-                                    RAG
-                                </span>
-                            </div>
-                            <p class="text-zinc-400 leading-relaxed">
-                                Реализация RAG-системы для семантического поиска по текстовым данным. Векторное
-                                хранилище, чанкинг документов, генерация ответов с контекстом
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">RAG</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">LLM</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Vector
-                                    DB</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Embeddings</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Data Engineering -->
-                <div
-                    class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-6 transition-all duration-300">
-                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-green-500/10 flex items-center justify-center">
-                                <i data-lucide="workflow" class="w-7 h-7 text-emerald-400"></i>
-                            </div>
-                        </div>
-                        <div class="space-y-4 flex-1">
-                            <h3 class="text-xl font-semibold text-zinc-100">ETL & Data Infrastructure</h3>
-                            <p class="text-zinc-400 leading-relaxed">
-                                Построение автоматизированных ETL-пайплайнов для обработки и трансформации данных.
-                                Интеграция с BI-системами для аналитики и визуализации
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Parquet</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Systemd
-                                    Timers</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Automated
-                                    Pipelines</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Analytics -->
-                <div
-                    class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-7 transition-all duration-300">
-                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-purple-500/10 flex items-center justify-center">
-                                <i data-lucide="bar-chart-3" class="w-7 h-7 text-indigo-400"></i>
-                            </div>
-                        </div>
-                        <div class="space-y-4 flex-1">
-                            <h3 class="text-xl font-semibold text-zinc-100">DWH & Analytics</h3>
-                            <p class="text-zinc-400 leading-relaxed">
-                                Проектирование схем данных и витрин. Миграция исторических данных в структурированное
-                                хранилище для построения BI-отчетности
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">PostgreSQL</span>
-                                <span class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Data
-                                    Marts</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Migrations</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Infrastructure -->
-                <div
-                    class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-8 transition-all duration-300">
-                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500/20 to-pink-500/10 flex items-center justify-center">
-                                <i data-lucide="server" class="w-7 h-7 text-rose-400"></i>
-                            </div>
-                        </div>
-                        <div class="space-y-4 flex-1">
-                            <h3 class="text-xl font-semibold text-zinc-100">On-premise ML Platform</h3>
-                            <p class="text-zinc-400 leading-relaxed">
-                                Настройка и поддержка Linux-серверов. Деплой и мониторинг фоновых сервисов, интеграция с
-                                внутренними системами
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Linux</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Systemd</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">On-premise</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Web Analytics -->
-                <div
-                    class="achievement-card glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-9 transition-all duration-300">
-                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-500/20 to-blue-500/10 flex items-center justify-center">
-                                <i data-lucide="layout-dashboard" class="w-7 h-7 text-sky-400"></i>
-                            </div>
-                        </div>
-                        <div class="space-y-4 flex-1">
-                            <h3 class="text-xl font-semibold text-zinc-100">BI & Observability</h3>
-                            <p class="text-zinc-400 leading-relaxed">
-                                Разработка веб-платформы и дашбордов с кастомизацией UI для мониторинга и визуализации
-                                данных в реальном времени
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Nginx</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">UI/UX
-                                    Design</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-md text-xs font-mono text-zinc-500 bg-zinc-800/50">Dashboards</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
-                    <span class="font-mono text-sm text-accent-primary">03</span>
-                </div>
-                <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Личные проекты</h2>
-
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- FinTech Analytics Bot -->
-                <div
-                    class="glass-card rounded-2xl p-6 space-y-4 opacity-0 animate-slide-up stagger-1 group transition-all duration-300">
-                    <div
-                        class="aspect-video rounded-xl bg-zinc-900/50 border border-zinc-800/50 overflow-hidden relative group-hover:border-accent-primary/30 transition-colors">
-                        <!-- Data Art: Market Pulse -->
-                        <svg viewBox="0 0 400 225" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
-                            preserveAspectRatio="xMidYMid slice">
-                            <defs>
-                                <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0" stop-color="#818cf8" stop-opacity="0.2" />
-                                    <stop offset="1" stop-color="#818cf8" stop-opacity="0" />
-                                </linearGradient>
-                                <filter id="glow-line" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur" />
-                                        <feMergeNode in="SourceGraphic" />
-                                    </feMerge>
-                                </filter>
-                            </defs>
-
-                            <!-- Background Grid -->
-                            <rect width="400" height="225" fill="#09090b" />
-                            <path d="M0 56h400 M0 112h400 M0 168h400" stroke="#27272a" stroke-width="1"
-                                stroke-dasharray="4 4" opacity="0.5" />
-                            <path d="M100 0v225 M200 0v225 M300 0v225" stroke="#27272a" stroke-width="1"
-                                stroke-dasharray="4 4" opacity="0.5" />
-
-                            <!-- Chart Area -->
-                            <path
-                                d="M0 180 L40 160 L80 170 L120 130 L160 140 L200 90 L240 100 L280 60 L320 80 L360 40 L400 50 V225 H0 Z"
-                                fill="url(#chart-grad)" opacity="0.6" />
-
-                            <!-- Main Line -->
-                            <path
-                                d="M0 180 L40 160 L80 170 L120 130 L160 140 L200 90 L240 100 L280 60 L320 80 L360 40 L400 50"
-                                fill="none" stroke="#818cf8" stroke-width="2" filter="url(#glow-line)" />
-
-                            <!-- Signal Points (Static) -->
-                            <circle cx="200" cy="90" r="5" fill="#a78bfa" filter="url(#glow-line)" />
-                            <circle cx="280" cy="60" r="5" fill="#34d399" filter="url(#glow-line)" />
-
-                            <!-- Overlay UI Elements -->
-                            <rect x="20" y="20" width="80" height="24" rx="4" fill="#18181b" stroke="#3f3f46"
-                                stroke-width="1" />
-                            <rect x="30" y="28" width="40" height="8" rx="2" fill="#52525b" />
-                        </svg>
-                    </div>
-                    <div class="space-y-2">
-                        <h3 class="text-lg font-medium text-zinc-100">FinTech Analytics Bot</h3>
-                        <p class="text-sm text-zinc-500 leading-relaxed">
-                            Автоматизация анализа фондового рынка: интеграция с Tinkoff Invest API, парсинг форума
-                            «Пульс» и оценка тональности сообщений с помощью LLM. Расчет технических индикаторов для
-                            генерации торговых саммари
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 pt-2">
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Tinkoff
-                            API</span>
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">NLP
-                            / Sentiment</span>
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Analytics</span>
-                    </div>
+        <!-- Projects -->
+        <section id="projects">
+            <div class="wrap">
+                <div class="section-head reveal-left line-reveal">
+                    <h2 class="h2">Личные проекты<span class="aside">Open-source и эксперименты</span></h2>
                 </div>
 
-                <!-- AI News Curator -->
-                <div
-                    class="glass-card rounded-2xl p-6 space-y-4 opacity-0 animate-slide-up stagger-2 group transition-all duration-300">
-                    <div
-                        class="aspect-video rounded-xl bg-zinc-900/50 border border-zinc-800/50 overflow-hidden relative group-hover:border-accent-primary/30 transition-colors">
-                        <!-- Data Art: News Feed Curation -->
-                        <svg viewBox="0 0 400 225" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
-                            preserveAspectRatio="xMidYMid slice">
-                            <rect width="400" height="225" fill="#09090b" />
-
-                            <!-- Raw Feed (Left) - Multiple cards -->
-                            <g fill="#18181b" stroke="#3f3f46" stroke-width="1">
-                                <rect x="30" y="30" width="90" height="50" rx="4" />
-                                <rect x="30" y="90" width="90" height="50" rx="4" />
-                                <rect x="30" y="150" width="90" height="50" rx="4" />
-                            </g>
-                            <!-- Text lines in cards -->
-                            <g stroke="#52525b" stroke-width="2">
-                                <line x1="40" y1="50" x2="100" y2="50" />
-                                <line x1="40" y1="62" x2="80" y2="62" />
-                                <line x1="40" y1="110" x2="100" y2="110" />
-                                <line x1="40" y1="122" x2="85" y2="122" />
-                                <line x1="40" y1="170" x2="100" y2="170" />
-                                <line x1="40" y1="182" x2="90" y2="182" />
-                            </g>
-
-                            <!-- Filter Arrow -->
-                            <path d="M140 112 L180 112" stroke="#a78bfa" stroke-width="2" />
-                            <path d="M175 107 L185 112 L175 117" fill="#a78bfa" />
-
-                            <!-- Filter Box -->
-                            <rect x="190" y="85" width="60" height="55" rx="6" fill="#a78bfa" fill-opacity="0.1"
-                                stroke="#a78bfa" stroke-width="1" />
-                            <text x="220" y="117" text-anchor="middle" font-family="monospace" font-size="10"
-                                fill="#a78bfa">LLM</text>
-
-                            <!-- Output Arrow -->
-                            <path d="M260 112 L300 112" stroke="#2dd4bf" stroke-width="2" />
-                            <path d="M295 107 L305 112 L295 117" fill="#2dd4bf" />
-
-                            <!-- Curated Output (Right) - Single highlighted card -->
-                            <rect x="310" y="70" width="70" height="85" rx="6" fill="#2dd4bf" fill-opacity="0.1"
-                                stroke="#2dd4bf" stroke-width="2" />
-                            <g stroke="#2dd4bf" stroke-width="2" opacity="0.8">
-                                <line x1="320" y1="90" x2="370" y2="90" />
-                                <line x1="320" y1="105" x2="360" y2="105" />
-                                <line x1="320" y1="120" x2="365" y2="120" />
-                            </g>
-                            <!-- Checkmark -->
-                            <path d="M335 135 l5 5 l10 -10" stroke="#2dd4bf" stroke-width="2" fill="none" />
-                        </svg>
-                    </div>
-                    <div class="space-y-2">
-                        <h3 class="text-lg font-medium text-zinc-100">AI/ML News Curator</h3>
-                        <p class="text-sm text-zinc-500 leading-relaxed">
-                            Интеллектуальный дайджест Reddit: мониторинг профильных сабреддитов, фильтрация
-                            шума и суммаризация ключевых обновлений в AI/ML. Автоматическая рассылка важных инсайтов
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 pt-2">
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Reddit
-                            API</span>
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">LLM
-                            Summarization</span>
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Automation</span>
-                    </div>
-                </div>
-
-                <!-- AI/ML Script Guardrails (Hackathon) -->
-                <div
-                    class="glass-card rounded-2xl p-6 space-y-4 opacity-0 animate-slide-up stagger-3 group transition-all duration-300">
-                    <div
-                        class="aspect-video rounded-xl bg-zinc-900/50 border border-zinc-800/50 overflow-hidden relative group-hover:border-accent-primary/30 transition-colors">
-                        <!-- Data Art: Face Scan Grid -->
-                        <svg viewBox="0 0 800 300" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
-                            preserveAspectRatio="xMidYMid slice">
-                            <rect width="800" height="300" fill="#09090b" />
-
-                            <!-- Avatar Grid (4+3 centered) -->
-                            <!-- Row 1: 4 avatars, centered -->
-                            <g transform="translate(155, 40)">
-                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
-                                    stroke-width="1" />
-                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
-                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
-                            </g>
-                            <g transform="translate(285, 40)">
-                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
-                                    stroke-width="1" />
-                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
-                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
-                            </g>
-                            <!-- MATCH Target -->
-                            <g transform="translate(415, 40)">
-                                <rect width="100" height="100" rx="8" fill="#2dd4bf" fill-opacity="0.1" stroke="#2dd4bf"
-                                    stroke-width="2" />
-                                <circle cx="50" cy="35" r="20" fill="#2dd4bf" fill-opacity="0.3" stroke="#2dd4bf"
-                                    stroke-width="1" />
-                                <path d="M25 75 Q50 90 75 75" fill="#2dd4bf" fill-opacity="0.3" stroke="#2dd4bf"
-                                    stroke-width="1" />
-                                <!-- Corner brackets -->
-                                <path
-                                    d="M0 0 h15 M0 0 v15 M100 0 h-15 M100 0 v15 M0 100 h15 M0 100 v-15 M100 100 h-15 M100 100 v-15"
-                                    stroke="#2dd4bf" stroke-width="2" fill="none" />
-                                <!-- Match label -->
-                                <rect x="15" y="-18" width="70" height="18" rx="4" fill="#2dd4bf" />
-                                <text x="50" y="-5" text-anchor="middle" font-family="monospace" font-size="10"
-                                    fill="#000" font-weight="bold">MATCH</text>
-                            </g>
-                            <g transform="translate(545, 40)">
-                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
-                                    stroke-width="1" />
-                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
-                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
-                            </g>
-
-                            <!-- Row 2: 3 avatars, centered -->
-                            <g transform="translate(220, 160)">
-                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
-                                    stroke-width="1" />
-                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
-                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
-                            </g>
-                            <g transform="translate(350, 160)">
-                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
-                                    stroke-width="1" />
-                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
-                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
-                            </g>
-                            <g transform="translate(480, 160)">
-                                <rect width="100" height="100" rx="8" fill="#18181b" stroke="#3f3f46"
-                                    stroke-width="1" />
-                                <circle cx="50" cy="35" r="20" fill="#3f3f46" />
-                                <path d="M25 75 Q50 90 75 75" fill="#3f3f46" />
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-medium text-zinc-100">OSINT Face Recognition System</h3>
-                            <span
-                                class="px-2 py-1 rounded text-[10px] font-mono bg-teal-500/10 text-teal-400 border border-teal-500/20">CV
-                                / OSINT</span>
+                <div class="grid-2 stagger-children">
+                    <div class="project-card">
+                        <h3 class="project-title">FinTech Analytics Bot</h3>
+                        <p class="project-desc">Автоматизация анализа фондового рынка: интеграция с Tinkoff Invest API,
+                            парсинг форума «Пульс» и оценка тональности сообщений с помощью LLM. Расчет технических
+                            индикаторов для генерации торговых саммари</p>
+                        <div class="tags">
+                            <span class="tag">Tinkoff API</span>
+                            <span class="tag">NLP / Sentiment</span>
+                            <span class="tag">Analytics</span>
                         </div>
-                        <p class="text-sm text-zinc-500 leading-relaxed">
-                            Система поиска цифрового следа в социальных сетях.
-                            Сбор данных (Data Mining), детекция лиц (Face Detection)
-                            и векторный поиск целевых персон (Vector Search) среди десятков тысяч изображений
-                        </p>
                     </div>
-                    <div class="flex flex-wrap gap-2 pt-2">
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">OpenCV</span>
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">FaceNet</span>
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Vector
-                            Search</span>
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Data
-                            Mining</span>
-                    </div>
-                </div>
 
-                <!-- AI/ML Script Guardrails (Hackathon) -->
-                <div
-                    class="glass-card rounded-2xl p-6 space-y-4 opacity-0 animate-slide-up stagger-4 group transition-all duration-300">
-                    <div
-                        class="aspect-video rounded-xl bg-zinc-900/50 border border-zinc-800/50 overflow-hidden relative group-hover:border-accent-primary/30 transition-colors">
-                        <!-- Data Art: Content Scan -->
-                        <svg viewBox="0 0 800 300" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
-                            preserveAspectRatio="xMidYMid slice">
-                            <rect width="800" height="300" fill="#09090b" />
-
-                            <!-- Content Blocks -->
-                            <g fill="#18181b" stroke="#27272a" stroke-width="1">
-                                <rect x="50" y="80" width="120" height="140" rx="8" />
-                                <rect x="200" y="80" width="120" height="140" rx="8" />
-                                <rect x="350" y="80" width="120" height="140" rx="8" />
-                                <rect x="500" y="80" width="120" height="140" rx="8" />
-                                <rect x="650" y="80" width="120" height="140" rx="8" />
-                            </g>
-
-                            <!-- Trigger Block (Highlighted) -->
-                            <rect x="350" y="80" width="120" height="140" rx="8" fill="#a78bfa" fill-opacity="0.15"
-                                stroke="#a78bfa" stroke-width="2" />
-
-                            <!-- Dummy Text Lines -->
-                            <g stroke="#3f3f46" stroke-width="2">
-                                <line x1="70" y1="110" x2="150" y2="110" />
-                                <line x1="70" y1="130" x2="130" y2="130" />
-                                <line x1="220" y1="110" x2="300" y2="110" />
-                                <line x1="220" y1="130" x2="280" y2="130" />
-                                <line x1="370" y1="110" x2="450" y2="110" stroke="#a78bfa" />
-                                <line x1="370" y1="130" x2="430" y2="130" stroke="#a78bfa" />
-                                <line x1="520" y1="110" x2="600" y2="110" />
-                                <line x1="520" y1="130" x2="580" y2="130" />
-                            </g>
-
-                            <!-- Status Indicators -->
-                            <g font-family="monospace" font-size="12" fill="#52525b">
-                                <text x="50" y="240">SAFE</text>
-                                <text x="200" y="240">SAFE</text>
-                                <text x="350" y="240" fill="#a78bfa">TRIGGER DETECTED</text>
-                                <text x="500" y="240">SAFE</text>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-medium text-zinc-100">AI/ML Script Guardrails & Content Rating</h3>
-                            <span
-                                class="px-2 py-1 rounded text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/20">Hackathon
-                                Project</span>
+                    <div class="project-card">
+                        <h3 class="project-title">AI/ML News Curator</h3>
+                        <p class="project-desc">Интеллектуальный дайджест Reddit: мониторинг профильных сабреддитов,
+                            фильтрация шума и суммаризация ключевых обновлений в AI/ML. Автоматическая рассылка важных
+                            инсайтов</p>
+                        <div class="tags">
+                            <span class="tag">Reddit API</span>
+                            <span class="tag">LLM Summarization</span>
+                            <span class="tag">Automation</span>
                         </div>
-                        <p class="text-sm text-zinc-500 leading-relaxed">
-                            Система автоматического определения возрастного рейтинга киносценариев. Гибридная
-                            архитектура: <strong>RuBERT-классификатор</strong> для детекции триггеров +
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">OSINT Face Recognition System</h3>
+                        <p class="project-desc">Система поиска цифрового следа в социальных сетях. Сбор данных (Data
+                            Mining), детекция лиц (Face Detection) и векторный поиск целевых персон (Vector Search)
+                            среди десятков тысяч изображений</p>
+                        <div class="tags">
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">FaceNet</span>
+                            <span class="tag">Vector Search</span>
+                            <span class="tag">Data Mining</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">Script Guardrails & Content Rating</h3>
+                        <p class="project-desc">Система автоматического определения возрастного рейтинга киносценариев.
+                            Гибридная архитектура: <strong>RuBERT-классификатор</strong> для детекции триггеров +
                             <strong>локальная LLM</strong> для генерации рекомендаций по оптимизации контента
                         </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 pt-2">
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">RuBERT</span>
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Local
-                            LLM</span>
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Auto-labeling</span>
-                        <span
-                            class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-400 border border-zinc-700">Transformers</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
-                    <span class="font-mono text-sm text-accent-primary">04</span>
-                </div>
-                <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Образование и курсы</h2>
-
-            </div>
-
-            <div class="grid gap-6">
-                <!-- University -->
-                <div class="glass-card rounded-2xl p-8 opacity-0 animate-slide-up stagger-1">
-                    <div class="flex flex-col md:flex-row justify-between gap-6">
-                        <div class="space-y-4 flex-1">
-                            <div>
-                                <h3 class="text-xl font-semibold text-zinc-100">Российский технологический университет
-                                    (МИРЭА)</h3>
-                                <p class="text-accent-primary font-medium">Машинное обучение и анализ данных</p>
-                            </div>
-
-                            <div
-                                class="inline-flex items-start gap-3 p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
-                                <div
-                                    class="mt-1 w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]">
-                                </div>
-                                <p class="text-sm text-zinc-400 leading-relaxed italic">
-                                    Обучение полностью адаптировано под <strong>full-time занятость</strong>.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="text-zinc-500 font-mono text-sm md:text-right flex-shrink-0">
-                            <div class="text-zinc-100 font-semibold bg-zinc-800/50 px-3 py-1 rounded-lg inline-block">
-                                2023 — 2027</div>
-                            <div class="text-xs text-emerald-400 mt-2 flex items-center md:justify-end gap-1">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                                Full-time ready
-                            </div>
+                        <div class="tags">
+                            <span class="tag">RuBERT</span>
+                            <span class="tag">Local LLM</span>
+                            <span class="tag">Auto-labeling</span>
+                            <span class="tag">Transformers</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Courses List -->
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div
-                        class="glass-card rounded-2xl p-6 opacity-0 animate-slide-up stagger-2 hover:border-accent-primary/50 transition-colors">
-                        <p class="text-sm text-zinc-500 font-mono mb-1">Karpov.courses</p>
-                        <h4 class="font-medium text-zinc-100">Python</h4>
+        <!-- Education -->
+        <section id="education">
+            <div class="wrap">
+                <div class="section-head reveal-left line-reveal">
+                    <h2 class="h2">Образование и курсы<span class="aside">Университет и курсы</span></h2>
+                </div>
+
+                <div class="edu-main reveal">
+                    <h3 class="edu-title">Российский технологический университет (МИРЭА)</h3>
+                    <p class="edu-spec">Машинное обучение и анализ данных</p>
+                    <div class="edu-note">2023 — 2027 · Full-time ready</div>
+                </div>
+
+                <div class="courses-grid stagger-children">
+                    <div class="course-card">
+                        <div class="course-org">Karpov.courses</div>
+                        <h4 class="course-name">Python</h4>
                     </div>
-                    <div
-                        class="glass-card rounded-2xl p-6 opacity-0 animate-slide-up stagger-3 hover:border-accent-primary/50 transition-colors">
-                        <p class="text-sm text-zinc-500 font-mono mb-1">Karpov.courses</p>
-                        <h4 class="font-medium text-zinc-100">SQL</h4>
+                    <div class="course-card">
+                        <div class="course-org">Karpov.courses</div>
+                        <h4 class="course-name">SQL</h4>
                     </div>
-                    <div
-                        class="glass-card rounded-2xl p-6 opacity-0 animate-slide-up stagger-4 hover:border-accent-primary/50 transition-colors">
-                        <p class="text-sm text-zinc-500 font-mono mb-1">Google</p>
-                        <h4 class="font-medium text-zinc-100 leading-tight">ML Crash Course</h4>
+                    <div class="course-card">
+                        <div class="course-org">Google</div>
+                        <h4 class="course-name">ML Crash Course</h4>
                     </div>
-                    <div
-                        class="glass-card rounded-2xl p-6 opacity-0 animate-slide-up stagger-5 hover:border-accent-primary/50 transition-colors">
-                        <p class="text-sm text-zinc-500 font-mono mb-1">AI Academy (Сбер)</p>
-                        <h4 class="font-medium text-zinc-100 leading-tight">Машинное обучение</h4>
+                    <div class="course-card">
+                        <div class="course-org">AI Academy (Сбер)</div>
+                        <h4 class="course-name">Машинное обучение</h4>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-
-            <!-- Section Header -->
-            <div class="mb-16 space-y-4 opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-[1px] bg-gradient-to-r from-accent-primary to-transparent"></div>
-                    <span class="font-mono text-sm text-accent-primary">05</span>
+        <!-- Contact -->
+        <section id="contact">
+            <div class="wrap">
+                <div class="section-head reveal-left line-reveal">
+                    <h2 class="h2">Связаться<span class="aside">Связаться со мной</span></h2>
                 </div>
-                <h2 class="text-3xl sm:text-4xl font-semibold gradient-text">Связаться</h2>
 
+                <div class="contact-grid stagger-children">
+                    <a href="https://t.me/nks3lt" target="_blank" class="contact-card">
+                        <div class="contact-icon">✈️</div>
+                        <div>
+                            <div class="contact-label">Telegram</div>
+                            <div class="contact-value">@nks3lt</div>
+                        </div>
+                    </a>
+
+                    <a href="mailto:nks3lt@gmail.com" class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">nks3lt@gmail.com</div>
+                        </div>
+                    </a>
+                </div>
             </div>
+        </section>
+    </main>
 
-            <!-- Contact Cards -->
-            <div class="grid sm:grid-cols-2 gap-6">
-
-                <!-- Telegram -->
-                <a href="https://t.me/nks3lt" target="_blank"
-                    class="glass-card rounded-2xl p-6 flex items-center gap-4 opacity-0 animate-slide-up stagger-1 transition-all duration-300 hover:scale-[1.02] group">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-                        <i data-lucide="send" class="w-6 h-6 text-blue-400"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium text-zinc-100">Telegram</p>
-                        <p class="text-sm text-zinc-500">@nks3lt</p>
-                    </div>
-                    <i data-lucide="arrow-up-right"
-                        class="w-5 h-5 text-zinc-600 ml-auto group-hover:text-zinc-400 transition-colors"></i>
-                </a>
-
-                <!-- Email -->
-                <a href="mailto:nks3lt@gmail.com"
-                    class="glass-card rounded-2xl p-6 flex items-center gap-4 opacity-0 animate-slide-up stagger-2 transition-all duration-300 hover:scale-[1.02] group">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center group-hover:bg-violet-500/20 transition-colors">
-                        <i data-lucide="mail" class="w-6 h-6 text-violet-400"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium text-zinc-100">Email</p>
-                        <p class="text-sm text-zinc-500">nks3lt@gmail.com</p>
-                    </div>
-                    <i data-lucide="arrow-up-right"
-                        class="w-5 h-5 text-zinc-600 ml-auto group-hover:text-zinc-400 transition-colors"></i>
-                </a>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-zinc-800/50">
-        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
-            <p class="font-mono text-sm text-zinc-600">© 2026</p>
+    <footer>
+        <div class="wrap">
+            <p class="footer-text">© 2026</p>
         </div>
     </footer>
 
-    <!-- Initialize Lucide Icons -->
     <script>
-        lucide.createIcons();
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                const icon = mobileMenuBtn.querySelector('i');
-                if (mobileMenu.classList.contains('hidden')) {
-                    icon.setAttribute('data-lucide', 'menu');
-                } else {
-                    icon.setAttribute('data-lucide', 'x');
-                }
-                lucide.createIcons();
+        // Kinetic Typography - split text into chars
+        document.querySelectorAll('.word').forEach(word => {
+            const text = word.textContent;
+            word.textContent = '';
+            [...text].forEach((char, i) => {
+                const span = document.createElement('span');
+                span.className = 'char';
+                span.style.setProperty('--d', i);
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                word.appendChild(span);
             });
-
-            // Close menu on link click
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuBtn.querySelector('i').setAttribute('data-lucide', 'menu');
-                    lucide.createIcons();
-                });
-            });
-        }
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.opacity-0').forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
         });
 
-        // Smooth scroll for navigation
+        // Scroll Reveal Animation with IntersectionObserver
+        const revealElements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-left, .reveal-scale, .stagger-children, .line-reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
