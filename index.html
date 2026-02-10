@@ -271,7 +271,8 @@
         .exp-list.reveal .exp-item {
             opacity: 0;
             transform: translateX(-100px);
-            transition: opacity 1.2s var(--ease-out-expo), transform 1.5s var(--ease-out-expo);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.5s var(--ease-out-expo),
+                background 0.35s var(--ease-out-expo), border-color 0.35s var(--ease-out-expo);
         }
 
         .exp-list.reveal.visible .exp-item:nth-child(1) {
@@ -614,17 +615,6 @@
             opacity: 0.85;
         }
 
-        .headline .whisper {
-            display: block;
-            margin-top: 16px;
-            font-family: var(--mono);
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--dim);
-        }
-
         .whisper-standalone {
             font-family: var(--mono);
             font-size: 12px;
@@ -643,6 +633,17 @@
             font-weight: 400;
             line-height: 1.75;
             margin-bottom: 32px;
+        }
+
+        .sub .focus {
+            display: inline-block;
+            margin-left: 10px;
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(245, 243, 238, 0.58);
+            white-space: nowrap;
         }
 
         .sub strong {
@@ -749,7 +750,7 @@
             font-weight: 400;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--dim);
+            color: rgba(212, 175, 55, 0.82);
         }
 
         .meta .value {
@@ -762,7 +763,9 @@
 
         .meta .value i {
             font-style: italic;
-            color: var(--gold);
+            /* Keep italics, but don't make the value "gold" (only the label should be gold). */
+            color: inherit;
+            opacity: 0.95;
         }
 
         /* Hero Right - Status Card */
@@ -1088,18 +1091,20 @@
            EXPERIENCE - Timeline Style
            ═══════════════════════════════════════ */
         .exp-list {
+            /* Timeline geometry (kept in the wrap padding so the content stays aligned) */
+            --exp-rail-x: -12px;
+            --exp-pad-x: 12px;
+
             display: flex;
             flex-direction: column;
             gap: 0;
             position: relative;
-            /* Reserve a dedicated gutter for the timeline so it never overlaps cards/content */
-            padding-left: 24px;
         }
 
         .exp-list::before {
             content: '';
             position: absolute;
-            left: 12px;
+            left: var(--exp-rail-x);
             top: 24px;
             bottom: 24px;
             width: 1px;
@@ -1109,17 +1114,16 @@
         }
 
         .exp-item {
-            padding: 28px 0 28px 26px;
+            padding: 28px 0 28px var(--exp-pad-x);
             border-bottom: 1px solid var(--edge);
-            transition: all 0.4s var(--ease-out-expo);
+            transition: background 0.35s var(--ease-out-expo), border-color 0.35s var(--ease-out-expo);
             position: relative;
         }
 
         .exp-item::before {
             content: '';
             position: absolute;
-            /* Place the dot into the gutter, centered on the rail (12px - 24px = -12px). */
-            left: -12px;
+            left: var(--exp-rail-x);
             top: 36px;
             width: 9px;
             height: 9px;
@@ -1137,7 +1141,7 @@
         }
 
         .exp-item:hover {
-            padding-left: 40px;
+            background: linear-gradient(90deg, rgba(245, 248, 255, 0.03), transparent 60%);
         }
 
         .exp-item:last-child {
@@ -1152,26 +1156,30 @@
         /* Current role: visually separate from the rest of the timeline items */
         .exp-item.current {
             margin: 10px 0 18px;
-            padding: 30px 28px 30px 36px;
+            padding: 32px 0 32px var(--exp-pad-x);
             border-bottom: none;
-            border-radius: var(--r1);
-            border: 1px solid transparent;
-            background:
-                linear-gradient(180deg, rgba(18, 18, 26, 0.82), rgba(10, 10, 14, 0.60)) padding-box,
-                linear-gradient(135deg,
-                    rgba(245, 248, 255, 0.22) 0%,
-                    rgba(var(--mint-rgb), 0.16) 34%,
-                    rgba(212, 175, 55, 0.26) 64%,
-                    rgba(245, 248, 255, 0.08) 100%) border-box;
-            box-shadow:
-                0 22px 70px rgba(0, 0, 0, 0.55),
-                0 0 0 1px rgba(245, 248, 255, 0.05),
-                inset 0 1px 0 rgba(245, 248, 255, 0.12);
+            z-index: 0; /* stacking context for the highlight panel */
         }
 
-        .exp-item.current:hover {
-            transform: translateY(-3px);
-            padding-left: 36px; /* override the generic hover "nudge" */
+        .exp-item.current::after {
+            content: '';
+            position: absolute;
+            left: var(--exp-pad-x);
+            right: 0;
+            top: 10px;
+            bottom: 10px;
+            border-radius: var(--r1);
+            background:
+                radial-gradient(680px 260px at 16% 22%, rgba(212, 175, 55, 0.20), transparent 62%),
+                radial-gradient(620px 260px at 92% 24%, rgba(var(--mint-rgb), 0.12), transparent 64%),
+                linear-gradient(180deg, rgba(18, 18, 26, 0.78), rgba(10, 10, 14, 0.58));
+            border: 1px solid rgba(245, 248, 255, 0.12);
+            border-left-color: rgba(245, 248, 255, 0.02);
+            box-shadow:
+                0 20px 80px rgba(0, 0, 0, 0.50),
+                inset 0 1px 0 rgba(245, 248, 255, 0.12);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .exp-item.current .exp-title {
@@ -1188,7 +1196,7 @@
         }
 
         .exp-item.current+.exp-item {
-            padding-top: 34px;
+            padding-top: 28px;
         }
 
         .exp-header {
@@ -1593,33 +1601,15 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Keep timeline on mobile, just make the gutter tighter. */
+            /* Experience timeline geometry */
             .exp-list {
-                padding-left: 18px;
+                --exp-rail-x: -10px;
+                --exp-pad-x: 10px;
             }
 
-            .exp-list::before {
-                left: 9px;
-            }
-
-            .exp-item {
-                padding-left: 20px;
-            }
-
-            .exp-item::before {
-                left: -9px;
-            }
-
-            .exp-item.current {
-                padding: 28px 18px 28px 30px;
-            }
-
-            .exp-item.current:hover {
-                padding-left: 30px;
-            }
-
-            .exp-item.current+.exp-item {
-                padding-top: 28px;
+            .exp-item.current::after {
+                top: 9px;
+                bottom: 9px;
             }
         }
 
@@ -1644,12 +1634,12 @@
                 padding: 60px 0;
             }
 
-            /* Hero "whisper" line: cleaner wrapping on small screens */
-            .headline .whisper {
-                letter-spacing: 0.14em;
-                line-height: 1.65;
-                max-width: 38ch;
-                text-wrap: balance;
+            /* "Focus" suffix: allow wrapping on very small screens */
+            .sub .focus {
+                margin-left: 0;
+                margin-top: 10px;
+                white-space: normal;
+                display: block;
             }
 
             /* Experience: avoid awkward far-right date alignment */
@@ -1660,40 +1650,25 @@
                 align-items: flex-start;
             }
 
-            .exp-list {
-                padding-left: 16px;
-            }
-
-            .exp-list::before {
-                left: 8px;
-            }
-
-            .exp-item {
-                padding-left: 18px;
-            }
-
-            .exp-item::before {
-                left: -8px;
-            }
-
             .exp-item.current {
-                padding: 26px 16px 26px 28px;
+                padding-top: 28px;
+                padding-bottom: 28px;
             }
 
-            .exp-item.current:hover {
-                padding-left: 28px;
+            .exp-list {
+                --exp-rail-x: -8px;
+                --exp-pad-x: 8px;
+            }
+
+            .exp-item.current::after {
+                top: 8px;
+                bottom: 8px;
+                border-radius: 14px;
             }
 
             /* Marquee: slightly faster on small screens */
             .marquee-track {
                 animation-duration: 18s;
-            }
-        }
-
-        /* Prevent layout-jumping hover effects on touch devices */
-        @media (hover: none) and (pointer: coarse) {
-            .exp-item:hover {
-                padding-left: 20px;
             }
         }
     </style>
@@ -1731,12 +1706,12 @@
                         <h1 class="headline">
                             <span class="word" data-pulse="1">Никитенко</span>
                             <span class="word accent" data-pulse="1">Николай</span>
-                            <span class="whisper">Разработка прикладных ML-систем&nbsp;·&nbsp;Computer Vision&nbsp;·&nbsp;NLP&nbsp;·&nbsp;LLM-агенты</span>
                         </h1>
 
                         <p class="sub">
                             <strong>Applied ML</strong>: разработка и внедрение моделей машинного обучения
                             для решения бизнес-задач и автоматизации
+                            <span class="focus">Computer Vision · NLP · LLM-агенты</span>
                         </p>
 
 
