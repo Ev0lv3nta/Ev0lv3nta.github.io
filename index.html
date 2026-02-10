@@ -94,8 +94,6 @@
             font-weight: 400;
             line-height: 1.7;
             letter-spacing: 0.01em;
-            width: 100%;
-            overflow-x: hidden;
             overscroll-behavior-x: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -1199,29 +1197,37 @@
 
         /* Current role: visually separate from the rest of the timeline items */
         .exp-item.current {
-            margin: 10px 0 18px;
-            padding: 32px 0 32px var(--exp-pad-x);
+            margin: 10px 0 22px;
+            /* Featured card: give real breathing room from the border (Apple-level spacing). */
+            padding: 36px calc(var(--exp-pad-x) + 34px);
             border-bottom: none;
             z-index: 0; /* stacking context for the highlight panel */
+            /* Don't let it span the full wrap width on large screens. */
+            max-width: 980px;
         }
 
         .exp-item.current::after {
             content: '';
             position: absolute;
             left: var(--exp-pad-x);
-            right: 0;
-            top: 10px;
-            bottom: 10px;
-            border-radius: var(--r1);
+            right: var(--exp-pad-x);
+            top: 8px;
+            bottom: 8px;
+            border-radius: calc(var(--r1) + 2px);
             background:
-                radial-gradient(680px 260px at 16% 22%, rgba(212, 175, 55, 0.20), transparent 62%),
-                radial-gradient(620px 260px at 92% 24%, rgba(var(--mint-rgb), 0.12), transparent 64%),
-                linear-gradient(180deg, rgba(18, 18, 26, 0.78), rgba(10, 10, 14, 0.58));
-            border: 1px solid rgba(245, 248, 255, 0.12);
-            border-left-color: rgba(245, 248, 255, 0.02);
+                radial-gradient(760px 300px at 14% 18%, rgba(212, 175, 55, 0.14), transparent 62%),
+                radial-gradient(760px 300px at 88% 18%, rgba(var(--mint-rgb), 0.10), transparent 64%),
+                linear-gradient(180deg, rgba(18, 18, 26, 0.72), rgba(10, 10, 14, 0.50)) padding-box,
+                linear-gradient(135deg,
+                    rgba(245, 248, 255, 0.18) 0%,
+                    rgba(var(--mint-rgb), 0.16) 35%,
+                    rgba(212, 175, 55, 0.22) 70%,
+                    rgba(245, 248, 255, 0.10) 100%) border-box;
+            border: 1px solid transparent;
             box-shadow:
-                0 20px 80px rgba(0, 0, 0, 0.50),
-                inset 0 1px 0 rgba(245, 248, 255, 0.12);
+                0 18px 70px rgba(0, 0, 0, 0.48),
+                0 0 0 1px rgba(245, 248, 255, 0.04),
+                inset 0 1px 0 rgba(245, 248, 255, 0.10);
             pointer-events: none;
             z-index: -1;
         }
@@ -1652,8 +1658,14 @@
             }
 
             .exp-item.current::after {
-                top: 9px;
-                bottom: 9px;
+                top: 8px;
+                bottom: 8px;
+            }
+
+            .exp-item.current {
+                max-width: none;
+                padding-left: calc(var(--exp-pad-x) + 28px);
+                padding-right: calc(var(--exp-pad-x) + 28px);
             }
         }
 
@@ -1695,8 +1707,11 @@
             }
 
             .exp-item.current {
-                padding-top: 28px;
-                padding-bottom: 28px;
+                padding-top: 30px;
+                padding-bottom: 30px;
+                padding-left: calc(var(--exp-pad-x) + 22px);
+                padding-right: calc(var(--exp-pad-x) + 22px);
+                max-width: none;
             }
 
             .exp-list {
@@ -1705,8 +1720,8 @@
             }
 
             .exp-item.current::after {
-                top: 8px;
-                bottom: 8px;
+                top: 7px;
+                bottom: 7px;
                 border-radius: 14px;
             }
 
