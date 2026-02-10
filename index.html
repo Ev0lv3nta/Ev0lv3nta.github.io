@@ -31,8 +31,10 @@
 
     <style>
         :root {
-            --bg: #0a0a0f;
-            --bg2: #0f0f18;
+            /* Clean deep base (avoid "muddy brown" wash from warm + cool glows). */
+            --bg: #0a0c12;
+            --bg3: #0b111a;
+            --bg2: #0f1823;
             --fg: #f5f3ee;
             --muted: rgba(245, 243, 238, 0.65);
             --dim: rgba(245, 243, 238, 0.38);
@@ -40,6 +42,8 @@
 
             --gold: #d4af37;
             --champagne: #f7e7ce;
+            --silver: #e8eef6;
+            --silver-rgb: 232, 238, 246;
             --ivory: #fffff0;
             --cyan: #64e9ff;
             --mint: #79f2d7;
@@ -83,7 +87,7 @@
         body {
             position: relative;
             min-height: 100vh;
-            background: linear-gradient(180deg, var(--bg), var(--bg2));
+            background: linear-gradient(180deg, var(--bg) 0%, var(--bg3) 55%, var(--bg2) 100%);
             color: var(--fg);
             font-family: var(--elegant);
             font-size: 16px;
@@ -101,20 +105,53 @@
         body::before {
             content: '';
             position: fixed;
-            inset: 0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 100vw; /* cover scrollbar gutter to avoid "second bar"/seam on Windows */
+            transform: translateX(-50%);
             pointer-events: none;
             z-index: 0;
             background:
-                radial-gradient(ellipse 1200px 900px at 18% 8%, rgba(212, 175, 55, 0.10), transparent 55%),
-                radial-gradient(ellipse 980px 760px at 82% 10%, rgba(var(--mint-rgb), 0.065), transparent 58%),
-                radial-gradient(ellipse 1100px 820px at 52% 22%, rgba(220, 230, 245, 0.06), transparent 62%),
-                radial-gradient(ellipse 1200px 920px at 14% 52%, rgba(212, 175, 55, 0.075), transparent 62%),
-                radial-gradient(ellipse 1100px 820px at 86% 58%, rgba(247, 231, 206, 0.050), transparent 64%),
-                radial-gradient(ellipse 980px 740px at 84% 46%, rgba(var(--mint-rgb), 0.045), transparent 62%),
-                radial-gradient(ellipse 1200px 920px at 58% 86%, rgba(212, 175, 55, 0.065), transparent 64%),
-                radial-gradient(ellipse 900px 680px at 76% 92%, rgba(220, 230, 245, 0.045), transparent 62%);
+                /* Cool wash to keep the whole page clean (prevents warm+cool = "swamp"). */
+                radial-gradient(ellipse 1700px 1200px at 56% 18%, rgba(var(--silver-rgb), 0.040), transparent 62%),
+                /* Gentle warm lift (ivory, not champagne) to avoid muddy brown. */
+                radial-gradient(ellipse 1500px 1100px at 22% 24%, rgba(255, 255, 240, 0.030), transparent 66%),
+
+                /* Gold highlights (smaller + brighter, less brown haze). */
+                radial-gradient(ellipse 980px 720px at 16% 10%, rgba(212, 175, 55, 0.14), transparent 56%),
+                radial-gradient(ellipse 1100px 820px at 14% 56%, rgba(212, 175, 55, 0.085), transparent 62%),
+                radial-gradient(ellipse 1100px 820px at 58% 86%, rgba(212, 175, 55, 0.105), transparent 62%),
+
+                /* Mint/cyan glows (kept away from gold-heavy zones). */
+                radial-gradient(ellipse 980px 720px at 90% 14%, rgba(var(--mint-rgb), 0.095), transparent 58%),
+                radial-gradient(ellipse 980px 740px at 86% 54%, rgba(var(--mint-rgb), 0.060), transparent 62%),
+                radial-gradient(ellipse 980px 740px at 78% 92%, rgba(var(--mint-rgb), 0.050), transparent 62%),
+
+                /* Silver accents to sharpen the palette. */
+                radial-gradient(ellipse 1100px 820px at 50% 28%, rgba(var(--silver-rgb), 0.055), transparent 62%),
+                radial-gradient(ellipse 1100px 820px at 86% 64%, rgba(var(--silver-rgb), 0.050), transparent 64%);
             opacity: 1;
-            filter: saturate(0.95);
+            filter: saturate(1.0);
+        }
+
+        /* Subtle vignette to keep tones clean without making the page gloomy. */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 100vw; /* cover scrollbar gutter to avoid "second bar"/seam on Windows */
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(1200px 900px at 50% -10%, rgba(0, 0, 0, 0.32), transparent 62%),
+                radial-gradient(1100px 900px at 50% 110%, rgba(0, 0, 0, 0.36), transparent 64%),
+                radial-gradient(900px 700px at -10% 50%, rgba(0, 0, 0, 0.24), transparent 62%),
+                radial-gradient(900px 700px at 110% 50%, rgba(0, 0, 0, 0.24), transparent 62%);
+            opacity: 0.55;
         }
 
         /* Ensure content sits above the fixed gradient layer. */
@@ -855,6 +892,7 @@
            MARQUEE - Elegant Divider
            ═══════════════════════════════════════ */
         .marquee {
+            --marquee-duration: 22s; /* Desktop/default speed */
             position: relative;
             padding: 28px 0;
             border-top: 1px solid var(--edge);
@@ -894,7 +932,8 @@
             display: flex;
             gap: 80px;
             white-space: nowrap;
-            animation: slide 22s linear infinite;
+            animation: slide var(--marquee-duration) linear infinite;
+            will-change: transform;
         }
 
         .marquee-track span {
@@ -925,11 +964,11 @@
 
         @keyframes slide {
             from {
-                transform: translateX(0);
+                transform: translate3d(0, 0, 0);
             }
 
             to {
-                transform: translateX(-50%);
+                transform: translate3d(-50%, 0, 0);
             }
         }
 
@@ -951,17 +990,22 @@
             content: '';
             position: absolute;
             /* Avoid horizontal overflow on mobile (prevents "blank space" when swiping). */
-            inset: -240px 0;
+            top: -240px;
+            bottom: -240px;
+            left: 50%;
+            width: 100vw; /* cover scrollbar gutter to avoid vertical seam */
+            transform: translateX(-50%);
             pointer-events: none;
             z-index: 0;
             background:
-                radial-gradient(ellipse 1400px 900px at 20% 0%, rgba(212, 175, 55, 0.07), transparent 58%),
-                radial-gradient(ellipse 1200px 820px at 92% 12%, rgba(var(--mint-rgb), 0.028), transparent 60%),
-                radial-gradient(ellipse 1200px 900px at 18% 60%, rgba(212, 175, 55, 0.045), transparent 62%),
-                radial-gradient(ellipse 1200px 900px at 86% 72%, rgba(220, 230, 245, 0.035), transparent 64%),
-                radial-gradient(ellipse 1200px 900px at 78% 48%, rgba(var(--mint-rgb), 0.020), transparent 64%),
-                radial-gradient(ellipse 1200px 900px at 70% 96%, rgba(212, 175, 55, 0.04), transparent 62%);
-            opacity: 0.55;
+                radial-gradient(ellipse 1600px 980px at 56% 8%, rgba(var(--silver-rgb), 0.045), transparent 62%),
+                radial-gradient(ellipse 1400px 960px at 26% 22%, rgba(255, 255, 240, 0.022), transparent 66%),
+                radial-gradient(ellipse 1400px 900px at 18% 2%, rgba(212, 175, 55, 0.060), transparent 58%),
+                radial-gradient(ellipse 1200px 820px at 92% 10%, rgba(var(--mint-rgb), 0.050), transparent 60%),
+                radial-gradient(ellipse 1200px 900px at 14% 64%, rgba(var(--silver-rgb), 0.040), transparent 62%),
+                radial-gradient(ellipse 1200px 900px at 86% 72%, rgba(var(--silver-rgb), 0.042), transparent 64%),
+                radial-gradient(ellipse 1200px 900px at 74% 96%, rgba(212, 175, 55, 0.042), transparent 62%);
+            opacity: 0.46;
         }
 
         .section-head {
@@ -1667,8 +1711,9 @@
             }
 
             /* Marquee: slightly faster on small screens */
-            .marquee-track {
-                animation-duration: 18s;
+            .marquee {
+                /* Phone: compensate for shorter track length so perceived speed matches desktop */
+                --marquee-duration: 12s;
             }
         }
     </style>
