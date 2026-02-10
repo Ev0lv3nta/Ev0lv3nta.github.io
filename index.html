@@ -77,6 +77,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
@@ -89,7 +90,9 @@
             font-weight: 400;
             line-height: 1.7;
             letter-spacing: 0.01em;
+            width: 100%;
             overflow-x: hidden;
+            overscroll-behavior-x: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -487,7 +490,7 @@
                     var(--gold) 50%,
                     var(--edge) 85%,
                     transparent 100%);
-            animation: accent-shimmer 4s ease-in-out infinite;
+            animation: accent-shimmer 2.6s ease-in-out infinite;
         }
 
         @keyframes accent-shimmer {
@@ -888,7 +891,7 @@
             display: flex;
             gap: 80px;
             white-space: nowrap;
-            animation: slide 40s linear infinite;
+            animation: slide 22s linear infinite;
         }
 
         .marquee-track span {
@@ -944,7 +947,8 @@
         main::before {
             content: '';
             position: absolute;
-            inset: -240px -160px;
+            /* Avoid horizontal overflow on mobile (prevents "blank space" when swiping). */
+            inset: -240px 0;
             pointer-events: none;
             z-index: 0;
             background:
@@ -1589,16 +1593,33 @@
                 grid-template-columns: 1fr;
             }
 
+            /* Keep timeline on mobile, just make the gutter tighter. */
+            .exp-list {
+                padding-left: 18px;
+            }
+
             .exp-list::before {
-                display: none;
+                left: 9px;
             }
 
             .exp-item {
-                padding-left: 0;
+                padding-left: 20px;
             }
 
             .exp-item::before {
-                display: none;
+                left: -9px;
+            }
+
+            .exp-item.current {
+                padding: 28px 18px 28px 30px;
+            }
+
+            .exp-item.current:hover {
+                padding-left: 30px;
+            }
+
+            .exp-item.current+.exp-item {
+                padding-top: 28px;
             }
         }
 
@@ -1621,6 +1642,58 @@
 
             section {
                 padding: 60px 0;
+            }
+
+            /* Hero "whisper" line: cleaner wrapping on small screens */
+            .headline .whisper {
+                letter-spacing: 0.14em;
+                line-height: 1.65;
+                max-width: 38ch;
+                text-wrap: balance;
+            }
+
+            /* Experience: avoid awkward far-right date alignment */
+            .exp-header {
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .exp-list {
+                padding-left: 16px;
+            }
+
+            .exp-list::before {
+                left: 8px;
+            }
+
+            .exp-item {
+                padding-left: 18px;
+            }
+
+            .exp-item::before {
+                left: -8px;
+            }
+
+            .exp-item.current {
+                padding: 26px 16px 26px 28px;
+            }
+
+            .exp-item.current:hover {
+                padding-left: 28px;
+            }
+
+            /* Marquee: slightly faster on small screens */
+            .marquee-track {
+                animation-duration: 18s;
+            }
+        }
+
+        /* Prevent layout-jumping hover effects on touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            .exp-item:hover {
+                padding-left: 20px;
             }
         }
     </style>
@@ -1658,8 +1731,7 @@
                         <h1 class="headline">
                             <span class="word" data-pulse="1">Никитенко</span>
                             <span class="word accent" data-pulse="1">Николай</span>
-                            <span class="whisper">Разработка прикладных ML-систем · Computer Vision · NLP ·
-                                LLM-агенты</span>
+                            <span class="whisper">Разработка прикладных ML-систем&nbsp;·&nbsp;Computer Vision&nbsp;·&nbsp;NLP&nbsp;·&nbsp;LLM-агенты</span>
                         </h1>
 
                         <p class="sub">
